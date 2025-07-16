@@ -1,0 +1,221 @@
+ /* ========================
+   ESTILOS GERAIS E RESET
+   ======================== */
+:root {
+    --cor-primaria: #0a2e58;
+    --cor-secundaria: #f0f8ff;
+    --cor-texto: #333;
+    --cor-destaque: #007bff;
+}
+
+/* Efeito de rolagem suave para as âncoras */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header, footer {
+    background-color: var(--cor-primaria);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1, h2, h3 {
+    color: var(--cor-primaria);
+}
+
+header h1 {
+    color: white;
+    margin: 0;
+}
+
+a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ========================
+   PÁGINA INICIAL (HOME)
+   ======================== */
+.secao-home {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.botoes-grid {
+    display: grid;
+    /* Cria colunas responsivas: elas terão no mínimo 200px e no máximo 1fr (fração do espaço) */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; /* Espaçamento entre os botões */
+    margin-top: 20px;
+}
+
+.botao-quadrado {
+    position: relative; /* Necessário para posicionar o texto sobre a imagem */
+    display: block;
+    aspect-ratio: 1 / 1; /* Garante que o botão seja sempre quadrado */
+    border-radius: 15px;
+    overflow: hidden; /* Esconde partes da imagem que saem do container */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.botao-quadrado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+.botao-quadrado img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir o espaço sem distorcer */
+    filter: brightness(0.7); /* Escurece um pouco a imagem para o texto ser legível */
+    transition: filter 0.3s ease;
+}
+
+.botao-quadrado:hover img {
+    filter: brightness(0.5);
+}
+
+.botao-quadrado span {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* ========================
+   PÁGINA DE ARTIGO
+   ======================== */
+.btn-voltar {
+    display: inline-block;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.artigo-header {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.sumario {
+    background-color: var(--cor-secundaria);
+    border: 1px solid #ddd;
+    border-left: 5px solid var(--cor-destaque);
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.sumario h3 {
+    margin-top: 0;
+}
+
+.sumario ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sumario li {
+    margin-bottom: 8px;
+}
+
+article section {
+    margin-bottom: 40px;
+}
+
+
+.bloco {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1em;
+            margin: 1.5em 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .definicao {
+            border-left: 5px solid #d9534f; /* Vermelho */
+            background-color: #fdf7f7;
+        }
+        .exemplo {
+            border-left: 5px solid #5cb85c; /* Verde */
+            background-color: #f7fdf7;
+        }
+        blockquote {
+            border-left: 5px solid #f0ad4e; /* Laranja */
+            background-color: #fffaf0;
+            padding: 10px 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        blockquote footer {
+            text-align: right;
+            font-style: normal;
+            font-weight: bold;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .katex-display {
+            margin: 1em 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+/* ========================
+   BOTÃO FLUTUANTE "TOPO"
+   ======================== */
+#btn-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--cor-destaque);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: none; /* Começa escondido */
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#btn-topo:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+/* Classe que será adicionada/removida via JS */
+.btn-topo-visivel {
+    display: flex;
+}

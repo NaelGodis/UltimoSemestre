@@ -1,0 +1,562 @@
+ <!DOCTYPE html>
+<html lang="pt-BR" id="topo"> <!-- ID para o botão "Voltar ao Topo" -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cáculo Integral| Meu Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Meu Blog Incrível</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Botão para voltar para a Home -->
+        <a href="index.html" class="btn-voltar">← Voltar para a Home</a>
+
+        <article>
+            <header class="artigo-header">
+                <h2>O Guia Definitivo de HTML Semântico</h2>
+                <p>Publicado em 25 de Outubro, 2023</p>
+            </header>
+
+            <!-- Sumário com Âncoras -->
+            <nav class="sumario" aria-label="Sumário do Artigo">
+                <h3>Sumário</h3>
+                <ul>
+                    <li><a href="#integral">1. Integral</a></li>
+                    <li><a href="#tecnicas">2. Técnicas de Integração</a></li>
+                    <li><a href="#aplicacoes">3. Aplicações da Integral</a></li>
+                    <li><a href="#sequencia">4. Sequência e Séries</a></li>
+                    <li><a href="#Listas">5.Listas</a></li>
+                    <li><a href="#Resolução de Provas">5.Resolução de Provas</a></li>
+                </ul>
+            </nav>
+
+            <!-- Conteúdo do Artigo dividido em seções com IDs -->
+            <section id="integral">
+
+                    <h2> Capítulo 1. Introdução à Integral</h2>
+                <p>
+                    O cálculo pode ser dividido em cálculo diferencial (derivadas) e cálculo integral (integração). Na história da matemática, um dos principais problemas do cálculo foi o da <strong>Quadratura</strong>. A Quadratura foi um problema proposto pelos antigos geômetras gregos que consistia na determinação de áreas.
+                </p>
+                <p>
+                    A título de exemplo, <em>Antífon</em>, no período grego clássico, foi um dos primeiros geômetras a realizar as primeiras quadraturas da história, a quadratura do círculo. <em>Antífon</em> procurou calcular a Quadratura do círculo através de infinitos polígonos inscritos; primeiro um quadrado, depois um pentágono, na sequência um hexágono e assim sucessivamente. Apesar dessa sequência não ser concluída, esse método originou o <strong>método de exaustão</strong>, que consiste no cálculo da área de uma figura através da inserção na mesma de uma sequência de polígonos, cuja a soma de suas áreas resultam na área da figura original.
+                </p>
+
+                <blockquote>
+                    <p>
+                        "uma área pode ser pensada como sendo formada de segmentos ou “indivisíveis” e que volume pode ser considerado como composto de áreas que são volumes indivisíveis ou quase atômicos.”
+                    </p>
+                    <footer>(BOYER, 2010, p. 226)</footer>
+                </blockquote>
+                
+                <p>
+                    Somente no século XVII, os matemáticos passaram a utilizar o conhecimento de limites para as Quadraturas ou, melhor, para a integral. <em>Newton</em> e <em>Leibniz</em> sabiam da existência da ligação entre coeficientes angulares de retas tangentes e áreas entre as curvas e assim, chegaram, independentemente entre si, a fórmulas para utilizar o cálculo de áreas de maneira funcional. Esse resultado é conhecido como o <strong>Teorema Fundamental do Cálculo</strong>.
+                </p>
+            </article>
+
+            <article id="integral-indefinida">
+                <h3>1.1. Integral Indefinida</h3>
+                <p>
+                    Em muitos processos físicos, como aceleração ou velocidade de um corpo, a função derivada é conhecida. No entanto, quando há a necessidade de determinar o valor da própria função, recorre-se à <strong>antiderivada</strong> ou <strong>integral indefinida</strong>.
+                </p>
+
+                <div class="bloco definicao">
+                    <h4>Definição</h4>
+                    <p>
+                        Seja uma função \( f : I \subset \mathbb{R} \to \mathbb{R} \). A função \( F(x) \) é denominada antiderivada ou integral indefinida de \( f(x) \) se:
+                    </p>
+                    $$ F'(x) = f(x), \quad \forall x \in I $$
+                    <p>É importante destacar que a escrita é equivalente a:</p>
+                    $$ F'(x) = \frac{dF}{dx} = f(x) \quad (1) $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 1</h4>
+                    <p>
+                        Sendo as funções de variáveis reais \( F(x) = \ln(x) + x^3 \) e \( f(x) = \frac{1}{x} + 3x^2 \), verificar se \(F\) é uma integral indefinida de \(f\).
+                    </p>
+                    <h5>Solução:</h5>
+                    <p>
+                        Conforme a definição, \(F\) será uma integral indefinida de \(f\) se \( \frac{dF}{dx} = f(x) \). Assim:
+                    </p>
+                    $$
+                    \begin{align*}
+                        F'(x) &= (\ln(x))' + (x^3)' \\
+                        &= \frac{1}{x} + 3x^2 \\
+                        &= f(x).
+                    \end{align*}
+                    $$
+                    <p>Portanto, \(F(x)\) é uma integral indefinida de \(f(x)\).</p>
+                </div>
+                
+                <div class="bloco definicao">
+                    <h4>Definição (Conjunto de Integrais)</h4>
+                    <p>
+                        O conjunto de todas as integrais indefinidas de \(f\) em um intervalo \(I\) é representado por:
+                    </p>
+                    
+                    <p>
+                        É comum referir-se à função \(f\) como o <strong>integrando</strong>. O símbolo \( \int \) foi historicamente proposto por <em>Johannes Kepler</em> e está associado ao cálculo de áreas através da soma de linhas. O termo \(dx\) é uma diferencial usada para indicar que \(x\) é a variável de integração.
+                    </p>
+                </div>
+            </article>
+            </section>
+
+            <section id="tecnicas">
+            <h2>Capítulo 2. Técnicas de Integração</h2>
+                      <article id="intro-tecnicas">
+                <h2>Introdução</h2>
+                <p>
+                    Nesta seção serão abordadas as principais técnicas de integração. Inicialmente, será vista a técnica de <strong>substituição</strong>, na sequência serão apresentadas a técnica de <strong>integração por partes</strong> e <strong>frações parciais</strong>. Além destas técnicas supracitadas, serão discutidas também duas técnicas de integração numérica: a regra de <em>Simpson</em> e a quadratura <em>Gaussiana</em>.
+                </p>
+            </article>
+
+            <article id="integracao-substituicao">
+                <h3>2.1. Integração por Substituição</h3>
+                <p>Sejam \(f\) e \(g\) duas funções de variáveis reais, cuja \( Im_g \subset D_f \) e \(F\) uma primitiva de \(f\). Pode-se considerar que a função \( F[g(x)] \) é uma primitiva de \( F'[g(x)]g'(x) \).</p>
+                
+                <div class="bloco definicao">
+                    <h4>Definição</h4>
+                    <p>A regra da substituição pode ser escrita da seguinte forma:</p>
+                    $$ \int F'[g(x)]g'(x)dx = F[g(x)] + C $$
+                    <p>Por simplicidade de escrita, fazemos a substituição \( u = g(x) \) e \( du = g'(x)dx \), o que nos leva a:</p>
+                    $$ \int F'[g(x)]g'(x)dx = \int F'[u]du = f[u] + C \quad (20) $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 1: Substituição Simples</h4>
+                    <p>Calcular a integral de \( \int 2xe^{x^2} dx \).</p>
+                    <h5>Solução:</h5>
+                    <p>Admitindo \( u = x^2 \) e o diferencial \( du = 2x \, dx \), verifica-se:</p>
+                    $$ \int 2xe^{x^2} dx = \int e^u du = e^u + C = e^{x^2} + C $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 2: Integral Definida por Substituição</h4>
+                    <p>Calcular a integral definida \( \int_{0}^{\pi/4} \sin(x)\cos(x)dx \).</p>
+                    <h5>Solução:</h5>
+                    <p>
+                        Usamos a substituição \( u = \sin(x) \), o que implica \( du = \cos(x)dx \).
+                        Precisamos também ajustar os limites de integração:
+                        <ul>
+                            <li>Se \( x = 0 \), então \( u = \sin(0) = 0 \).</li>
+                            <li>Se \( x = \pi/4 \), então \( u = \sin(\pi/4) = \frac{\sqrt{2}}{2} \).</li>
+                        </ul>
+                    </p>
+                    <p>Assim, a integral se torna:</p>
+                    $$
+                    \begin{align*}
+                    \int_{0}^{\pi/4} \sin(x)\cos(x)dx &= \int_{0}^{\sqrt{2}/2} u \, du \\
+                    &= \left[ \frac{u^2}{2} \right]_{0}^{\sqrt{2}/2} \\
+                    &= \frac{(\frac{\sqrt{2}}{2})^2}{2} - \frac{0^2}{2} \\
+                    &= \frac{2/4}{2} = \frac{1/2}{2} = \frac{1}{4}.
+                    \end{align*}
+                    $$
+                </div>
+            </article>
+
+            <article id="integracao-partes">
+                <h3>2.2. Integração por Partes</h3>
+                <p>Supondo que as funções \(f\) e \(g\) sejam deriváveis no intervalo \( I \subset \mathbb{R} \), a regra do produto para derivadas nos diz:</p>
+                $$ [f(x)g(x)]' = f'(x)g(x) + f(x)g'(x) $$
+                <p>Rearranjando e integrando ambos os lados, chegamos à fórmula de integração por partes.</p>
+
+                <div class="bloco definicao">
+                    <h4>Definição</h4>
+                    <p>A fórmula para integração por partes é:</p>
+                    $$ \int f(x)g'(x)dx = f(x)g(x) - \int f'(x)g(x)dx \quad (22) $$
+                    <p>Para simplificar, usamos a substituição \( u = f(x) \) e \( dv = g'(x)dx \). Consequentemente, \( du = f'(x)dx \) e \( v = g(x) \). A fórmula fica:</p>
+                    $$ \int u \, dv = uv - \int v \, du \quad (23) $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 3: Integração de ln(x)</h4>
+                    <p>Calcular a integral \( \int \ln(x) dx \).</p>
+                    <h5>Solução:</h5>
+                    <p>Escolhemos \( u = \ln(x) \) e \( dv = dx \). Daí, \( du = \frac{1}{x}dx \) e \( v = x \). Aplicando a fórmula:</p>
+                    $$
+                    \begin{align*}
+                    \int \ln(x) dx &= x\ln(x) - \int x \cdot \frac{1}{x} dx \\
+                    &= x\ln(x) - \int 1 \, dx \\
+                    &= x\ln(x) - x + C.
+                    \end{align*}
+                    $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 4: Integração por Partes Repetida</h4>
+                    <p>Calcular a integral \( \int x^2 e^x dx \).</p>
+                    <h5>Solução:</h5>
+                    <p>Primeira aplicação: \( u = x^2 \), \( dv = e^x dx \). Então, \( du = 2x \, dx \) e \( v = e^x \).</p>
+                    $$ \int x^2 e^x dx = x^2 e^x - 2 \int x e^x dx $$
+                    <p>A nova integral \( \int x e^x dx \) também requer integração por partes. <br>
+                    Segunda aplicação: \( u = x \), \( dv = e^x dx \). Então, \( du = dx \) e \( v = e^x \).</p>
+                    $$ \int x e^x dx = xe^x - \int e^x dx = xe^x - e^x $$
+                    <p>Substituindo o resultado de volta na primeira equação:</p>
+                    $$ \int x^2 e^x dx = x^2 e^x - 2(xe^x - e^x) + C = x^2 e^x - 2xe^x + 2e^x + C $$
+                </div>
+            </article>
+
+            <article id="integracao-trigonometrica">
+                <h3>2.3. Integrais de Funções Trigonométricas</h3>
+                <p>Para integrais da forma \( \int \sin^n u \, du \) e \( \int \cos^n u \, du \), onde \(n\) é um inteiro positivo, podemos recorrer a identidades trigonométricas.</p>
+
+                <div class="bloco definicao">
+                    <h4>Identidades Úteis</h4>
+                    $$ \cos^2 x + \sin^2 x = 1 \quad (24) $$
+                    $$ \sin^2 x = \frac{1 - \cos(2x)}{2} \quad (25) $$
+                    $$ \cos^2 x = \frac{1 + \cos(2x)}{2} \quad (26) $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 5: Potência Ímpar</h4>
+                    <p>Calcular a integral \( \int \cos^5 x \, dx \).</p>
+                    <h5>Solução:</h5>
+                    <p>Separamos um fator e usamos a identidade (24):</p>
+                    $$
+                    \begin{align*}
+                    \int \cos^5 x \, dx &= \int \cos^4 x \cos x \, dx \\
+                    &= \int (\cos^2 x)^2 \cos x \, dx \\
+                    &= \int (1 - \sin^2 x)^2 \cos x \, dx
+                    \end{align*}
+                    $$
+                    <p>Agora, com a substituição \( u = \sin x \), \( du = \cos x \, dx \):</p>
+                    $$
+                    \begin{align*}
+                    \int (1 - u^2)^2 du &= \int (1 - 2u^2 + u^4) du \\
+                    &= u - \frac{2u^3}{3} + \frac{u^5}{5} + C \\
+                    &= \sin x - \frac{2}{3}\sin^3 x + \frac{1}{5}\sin^5 x + C.
+                    \end{align*}
+                    $$
+                </div>
+            </article>
+            
+            <article id="fracoes-parciais">
+                <h3>2.4. Integrais de Funções Racionais por Frações Parciais</h3>
+                <p>Essa técnica consiste em expressar uma função racional \( f(x) = \frac{P(x)}{Q(x)} \) como uma soma de frações mais simples.</p>
+                
+                <div class="bloco definicao">
+                    <h4>Definição: Fatores Lineares Distintos</h4>
+                    <p>Se \(Q(x)\) pode ser fatorado em fatores lineares distintos \( (x - a_1)(x - a_2)...(x - a_n) \) e o grau de \(P\) é menor que o de \(Q\), a decomposição é:</p>
+                    $$ \frac{P(x)}{Q(x)} = \frac{A_1}{x - a_1} + \frac{A_2}{x - a_2} + \cdots + \frac{A_n}{x - a_n} \quad (33) $$
+                </div>
+                
+                <div class="bloco exemplo">
+                    <h4>Exemplo 6: Fatores Lineares Distintos</h4>
+                    <p>Determinar a integral \( \int \frac{x+2}{x^3 - x} dx \).</p>
+                    <h5>Solução:</h5>
+                    <p>O denominador é \( x^3 - x = x(x-1)(x+1) \). A decomposição é:</p>
+                    $$ \frac{x+2}{x(x-1)(x+1)} = \frac{A}{x} + \frac{B}{x-1} + \frac{C}{x+1} $$
+                    <p>Multiplicando ambos os lados por \(x(x-1)(x+1)\), obtemos:</p>
+                    $$ x+2 = A(x-1)(x+1) + Bx(x+1) + Cx(x-1) $$
+                    <p>Substituindo as raízes \(x=0, x=1, x=-1\), encontramos \(A=-2\), \(B=3/2\) e \(C=1/2\).</p>
+                    <p>A integral se torna:</p>
+                     $$
+                    \begin{align*}
+                    \int \left( \frac{-2}{x} + \frac{3/2}{x-1} + \frac{1/2}{x+1} \right) dx &= -2\int \frac{1}{x}dx + \frac{3}{2}\int \frac{1}{x-1}dx + \frac{1}{2}\int \frac{1}{x+1}dx \\
+                    &= -2\ln|x| + \frac{3}{2}\ln|x-1| + \frac{1}{2}\ln|x+1| + C.
+                    \end{align*}
+                    $$
+                </div>
+            </article>
+            </section>
+
+            <section id="aplicacoes">
+                  <article id="capitulo-aplicacoes-integral">
+    <h2>Capítulo 3: Aplicações da Integral</h2>
+
+    <section id="comprimento-curvas">
+        <h3>3.1. Comprimento de Curvas</h3>
+        <p>
+            Se \( y = f(x) \) é uma curva suave no intervalo \( I[a, b] \in \mathbb{R} \), então o comprimento de arco \( L \) dessa curva sobre \( I \) é definido por:
+        </p>
+        <div class="bloco definicao">
+            <h4>Fórmula do Comprimento de Arco</h4>
+            $$ L = \int_{a}^{b} \sqrt{1 + [f'(x)]^2} \, dx \quad (70) $$
+        </div>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Comprimento de Curva</h4>
+            <p>Determine o comprimento da curva \( f(x) = x^{3/2} \) para \( 1 \le x \le 8 \).</p>
+            <h5>Solução:</h5>
+            <p>Primeiro, encontramos a derivada: \( f'(x) = \frac{3}{2}x^{1/2} \). Usando a fórmula (70), obtemos:</p>
+            <!-- Nota: A integral original do slide estava incorreta. Esta é a versão corrigida. -->
+            $$ L = \int_{1}^{8} \sqrt{1 + \left(\frac{3}{2}x^{1/2}\right)^2} \, dx = \int_{1}^{8} \sqrt{1 + \frac{9}{4}x} \, dx $$
+            <p>Usando a substituição \( u = 1 + \frac{9}{4}x \), temos \( du = \frac{9}{4}dx \), ou seja, \( dx = \frac{4}{9}du \).</p>
+            <p>Ajustando os limites: se \(x=1 \Rightarrow u = 1 + \frac{9}{4} = \frac{13}{4} \). Se \(x=8 \Rightarrow u = 1 + \frac{9}{4}(8) = 19 \).</p>
+            $$ L = \int_{13/4}^{19} \sqrt{u} \cdot \frac{4}{9} du = \frac{4}{9} \left[ \frac{2}{3}u^{3/2} \right]_{13/4}^{19} = \frac{8}{27} \left( 19\sqrt{19} - \frac{13\sqrt{13}}{8} \right) \approx 23.98 \text{ u.c.} $$
+        </div>
+    </section>
+
+    <section id="volume-solido-revolucao">
+        <h3>3.2. Volume de Sólido de Revolução (Eixo Y)</h3>
+        <p>
+            Seja \( f: \mathbb{R} \to \mathbb{R} \), o volume \( V \) do sólido obtido pela rotação em torno do eixo Y da região sob a curva \( y = f(x) \) de \( a \) até \( b \) é:
+        </p>
+        <div class="bloco definicao">
+            <h4>Fórmula do Volume (Método das Cascas Cilíndricas)</h4>
+            $$ V = \int_{a}^{b} 2\pi x f(x) \, dx, \quad \text{onde } 0 \le a \le b $$
+        </div>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Volume de Rotação</h4>
+            <p>Calcule o volume do sólido obtido pela rotação, em torno do eixo Y, do conjunto de todos os pares \( (x, y) \) tais que \( 0 \le x \le 1 \) e a região está entre as curvas \( y=x \) e \( y=x^3 \).</p>
+            <p>A altura da casca cilíndrica é \( f(x) = x - x^3 \).</p>
+            <h5>Solução:</h5>
+            $$
+            \begin{align*}
+            V &= \int_{0}^{1} 2\pi x (x - x^3) \, dx \\
+            &= 2\pi \int_{0}^{1} (x^2 - x^4) \, dx \\
+            &= 2\pi \left[ \frac{x^3}{3} - \frac{x^5}{5} \right]_{0}^{1} \\
+            &= 2\pi \left( \frac{1}{3} - \frac{1}{5} \right) = 2\pi \left( \frac{5 - 3}{15} \right) = \frac{4\pi}{15} \text{ u.v.}
+            \end{align*}
+            $$
+        </div>
+    </section>
+
+    <section id="trabalho">
+        <h3>3.3. Trabalho</h3>
+        <p>
+            Define-se o trabalho \( \phi \) realizado por uma força \( F \) variável, dada pela função \( f(x) \) ao longo de uma direção (representada pelo vetor \( \vec{i} \)), na distância de \( x = a \) até \( x = b \) como a integral:
+        </p>
+        <div class="bloco definicao">
+            <h4>Fórmula do Trabalho</h4>
+            $$ \phi = \int_{a}^{b} f(x) \, dx \quad (71) $$
+        </div>
+        
+        <div class="bloco exemplo">
+            <h4>Exemplo: Cálculo de Trabalho</h4>
+            <p>
+                Uma força \( f(x) = \frac{1}{x} \vec{i} \) atua sobre uma partícula que se desloca sobre o eixo das abscissas. Calcule o trabalho realizado pela força no deslocamento de \( 1 \le x \le 2 \).
+            </p>
+            <h5>Solução:</h5>
+            $$ \phi = \int_{1}^{2} \frac{1}{x} \, dx = \left[ \ln|x| \right]_{1}^{2} = \ln(2) - \ln(1) = \ln(2) \text{ J} $$
+        </div>
+    </section>
+
+    <section id="forca-fluido">
+        <h3>3.4. Força de um Fluido sobre uma Superfície Vertical</h3>
+        <p>
+            Suponha que uma superfície plana esteja imersa verticalmente em um fluido com peso específico \( \rho \), e que a parte submersa se estenda de \( x = a \) até \( x = b \) ao longo de um eixo x cujo sentido positivo é para baixo. Se \( w(x) \) é a largura da superfície e \( h(x) \) é a profundidade do ponto \( x \), a força total \( F \) do fluido sobre a superfície é:
+        </p>
+        <div class="bloco definicao">
+            <h4>Fórmula da Força Hidrostática</h4>
+            $$ F = \int_{a}^{b} \rho \cdot w(x) \cdot h(x) \, dx \quad (72) $$
+        </div>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Força sobre um Dique</h4>
+            <p>
+                A face de um dique é um retângulo vertical com 100 pés de altura e 200 pés de largura. Encontre a força total que o fluido exerce sobre a face quando a superfície da água está no nível do topo do dique. Considere o peso específico da água como \( \rho = 62.4 \, \text{lb/pés}^3 \).
+            </p>
+            <h5>Solução:</h5>
+            <p>
+                Considerando o eixo x apontando para baixo a partir do topo, temos:
+                <ul>
+                    <li>Largura constante: \( w(x) = 200 \)</li>
+                    <li>Profundidade: \( h(x) = x \)</li>
+                    <li>Intervalo de integração: de \( x = 0 \) até \( x = 100 \)</li>
+                </ul>
+            </p>
+            $$
+            \begin{align*}
+            F &= \int_{0}^{100} 62.4 \cdot 200 \cdot x \, dx \\
+            &= 12480 \int_{0}^{100} x \, dx \\
+            &= 12480 \left[ \frac{x^2}{2} \right]_{0}^{100} \\
+            &= 12480 \left( \frac{100^2}{2} \right) = 12480 \cdot 5000 = 62,400,000 \, \text{lb}.
+            \end{align*}
+            $$
+        </div>
+    </section>
+</article>
+            </section>
+
+            <section id="sequencia">
+                  <article id="capitulo-sequencias-series">
+    <h2>Capítulo 4: Sequências e Séries</h2>
+
+    <section id="sequencias">
+        <h3>4.1. Sequências</h3>
+        <p>
+            Diz-se que uma <strong>sequência</strong> ou <strong>sucessão</strong> numérica é uma função real cujo domínio é o conjunto dos números naturais \( \mathbb{N} \). A cada número \( n \) essa função associa um número real \( a_n \). A imagem da sequência é formada pelo conjunto de todos os valores \( a_n \), podendo ser um conjunto finito ou infinito.
+        </p>
+        <p>Geralmente, uma sequência numérica é escrita como uma lista ordenada: \( a_1, a_2, a_3, \dots, a_n, \dots \). Por simplicidade, usamos a notação \( \{a_n\}_{n=1}^{\infty} \) ou simplesmente \( \{a_n\} \).</p>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Sequência de Fibonacci</h4>
+            <p>Um exemplo clássico é a sequência de Fibonacci, onde os dois primeiros termos são 1 e cada termo subsequente é a soma dos dois anteriores:</p>
+            $$ 1, 1, 2, 3, 5, 8, 13, 21, \dots $$
+            <p>Formalmente, é definida por:</p>
+            $$ \{a_n\} = \begin{cases} a_1 = 1, a_2 = 1 \\ a_n = a_{n-1} + a_{n-2}, & \text{para } n \ge 3 \end{cases} $$
+        </div>
+
+        <div class="bloco definicao">
+            <h4>Definição: Limite de uma Sequência</h4>
+            <p>
+                Uma sequência \( \{a_n\} \) tem o <strong>limite</strong> \( L \), e escrevemos \( \lim_{n \to \infty} a_n = L \), se os termos \( a_n \) se aproximam de \( L \) à medida que \( n \) se torna arbitrariamente grande. Se o limite \( L \) existe e é finito, diz-se que a sequência <strong>converge</strong>. Caso contrário, a sequência <strong>diverge</strong>.
+            </p>
+            <p>
+                Formalmente, para cada \( \varepsilon > 0 \), existe um inteiro correspondente \( n_0 \) tal que se \( n > n_0 \), então \( |a_n - L| < \varepsilon \).
+            </p>
+        </div>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Convergência</h4>
+            <p>Demonstrar que a sequência \( \left\{ \frac{n}{n+1} \right\}_{n=1}^{\infty} \) converge para 1.</p>
+            <h5>Solução:</h5>
+            <p>Calculamos o limite quando \( n \to \infty \). Dividindo o numerador e o denominador pela maior potência de \( n \):</p>
+            $$ \lim_{n \to \infty} \frac{n}{n+1} = \lim_{n \to \infty} \frac{\frac{n}{n}}{\frac{n}{n} + \frac{1}{n}} = \lim_{n \to \infty} \frac{1}{1 + \frac{1}{n}} = \frac{1}{1+0} = 1 $$
+            <p>Como o limite é 1, a sequência converge para 1.</p>
+        </div>
+        
+        <div class="bloco definicao">
+            <h4>Definição: Sequência Monótona e Limitada</h4>
+            <ul>
+                <li>Uma sequência \( \{a_n\} \) é <strong>crescente</strong> se \( a_n < a_{n+1} \) para todo \( n \ge 1 \).</li>
+                <li>É <strong>decrescente</strong> se \( a_n > a_{n+1} \) para todo \( n \ge 1 \).</li>
+                <li>É <strong>monótona</strong> se for crescente ou decrescente.</li>
+                <li>É <strong>limitada superiormente</strong> por \( M \) se \( a_n \le M \) para todo \( n \).</li>
+                <li>É <strong>limitada inferiormente</strong> por \( m \) se \( a_n \ge m \) para todo \( n \).</li>
+                <li>É <strong>limitada</strong> se for limitada superior e inferiormente.</li>
+            </ul>
+        </div>
+
+        <div class="bloco definicao">
+            <h4>Teorema I: Teorema da Convergência Monótona</h4>
+            <p>Toda sequência que é <strong>monótona</strong> e <strong>limitada</strong> é convergente.</p>
+        </div>
+    </section>
+
+    <section id="series">
+        <h3>4.2. Séries</h3>
+        <p>Uma importante aplicação das sequências infinitas é a representação de somas infinitas, conhecidas como <strong>séries</strong>.</p>
+        
+        <div class="bloco definicao">
+            <h4>Definição: Série Infinita</h4>
+            <p>Dada uma sequência \( \{a_n\} \), a soma infinita:</p>
+            $$ \sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \dots + a_n + \dots \quad (75) $$
+            <p>é chamada de <strong>série infinita</strong>. Para determinar se essa soma tem um valor finito, analisamos a sequência de <strong>somas parciais</strong> \( \{S_n\} \), onde:</p>
+            $$ S_n = \sum_{i=1}^{n} a_i = a_1 + a_2 + \dots + a_n $$
+            <p>Se a sequência de somas parciais \( \{S_n\} \) converge para um limite \( L \), então a série converge e sua soma é \( L \). Caso contrário, a série diverge.</p>
+        </div>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Série Geométrica</h4>
+            <p>Uma série da forma \( \sum_{n=1}^{\infty} a r^{n-1} = a + ar + ar^2 + \dots \) é chamada de <strong>série geométrica</strong>.</p>
+            <ul>
+                <li>Ela <strong>converge</strong> para a soma \( S = \frac{a}{1-r} \) se a razão \( |r| < 1 \).</li>
+                <li>Ela <strong>diverge</strong> se \( |r| \ge 1 \).</li>
+            </ul>
+        </div>
+        
+        <h4>Testes de Convergência</h4>
+        <p>Existem vários testes para determinar se uma série converge ou diverge sem precisar calcular o limite das somas parciais.</p>
+
+        <div class="bloco definicao">
+            <h4>Teorema II: Teste da Divergência</h4>
+            <p>Se a série \( \sum_{n=1}^{\infty} a_n \) converge, então \( \lim_{n \to \infty} a_n = 0 \).</p>
+            <p><strong>Aplicação (Contrapositiva):</strong> Se \( \lim_{n \to \infty} a_n \neq 0 \) ou se o limite não existe, então a série \( \sum a_n \) <strong>diverge</strong>.</p>
+        </div>
+
+        <div class="bloco definicao">
+            <h4>Outros Testes Importantes</h4>
+            <ul>
+                <li><strong>Teste da Integral:</strong> Se \(f\) é uma função contínua, positiva e decrescente em \( [1, \infty) \) e \( a_n = f(n) \), então a série \( \sum a_n \) é convergente se e somente se a integral imprópria \( \int_{1}^{\infty} f(x) dx \) é convergente.</li>
+                <li><strong>Teste de Comparação:</strong> Dadas duas séries de termos positivos \( \sum a_n \) e \( \sum b_n \). Se \( a_n \le b_n \) para todo \(n\), então:
+                    <ol>
+                        <li>Se \( \sum b_n \) converge, \( \sum a_n \) também converge.</li>
+                        <li>Se \( \sum a_n \) diverge, \( \sum b_n \) também diverge.</li>
+                    </ol>
+                </li>
+                <li><strong>Teste da Razão:</strong> Seja \( r = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| \).
+                    <ul>
+                        <li>Se \( r < 1 \), a série converge absolutamente.</li>
+                        <li>Se \( r > 1 \) ou \( r = \infty \), a série diverge.</li>
+                        <li>Se \( r = 1 \), o teste é inconclusivo.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="series-taylor-maclaurin">
+        <h3>4.3. Séries de Taylor e de Maclaurin</h3>
+        <p>Se uma função \( f(x) \) pode ser representada por uma série de potências em torno de \( x = a \), essa representação é única e é chamada de <strong>Série de Taylor</strong>.</p>
+        
+        <div class="bloco definicao">
+            <h4>Definição: Série de Taylor e Maclaurin</h4>
+            <p>A série de Taylor para uma função \( f(x) \) em torno de \( x=a \) é dada por:</p>
+            $$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n \quad (83) $$
+            <p>Onde \( f^{(n)}(a) \) é a n-ésima derivada de \(f\) avaliada em \(a\).</p>
+            <p>No caso especial em que \( a=0 \), a série é chamada de <strong>Série de Maclaurin</strong>:</p>
+            $$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^n \quad (84) $$
+        </div>
+
+        <div class="bloco exemplo">
+            <h4>Exemplo: Série de Maclaurin para \( e^x \)</h4>
+            <p>Como \( f(x) = e^x \), todas as suas derivadas \( f^{(n)}(x) = e^x \). Avaliando em \( a=0 \), temos \( f^{(n)}(0) = e^0 = 1 \) para todo \( n \).</p>
+            <p>Portanto, a série de Maclaurin para \( e^x \) é:</p>
+            $$ e^x = \sum_{n=0}^{\infty} \frac{1}{n!} x^n = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots $$
+        </div>
+    </section>
+
+    <section id="Listas">
+
+                    <h2> Listas de Exercício</h2>
+            
+                <div class="bloco definicao">
+                    <h4>Lista Primitivas</h4>
+                    <p>Calcule as primitivas das seguintes funções:</p>
+                     <div class="bloco exemplo">
+                    <p>a)</p>$$ \int x dx$$
+                    <p>Solução:</p>
+                    $$ \frac{x¹⁺¹}{1+1} = \frac{x²}{2}$$
+                    
+
+                </div>
+                <div class="bloco exemplo">
+                    <p>b)</p>$$ \int 3 dx$$
+                    <p>Solução:</p>
+                    $$ \frac{3x¹⁺¹}{1+1} = \frac{3x²}{2}$$
+                    
+
+                </div>]
+                </div>
+
+               
+                 
+                </div>
+            </article>
+            </section>
+</article>
+
+        </article>
+    </main>
+
+    <!-- Botão Flutuante para Voltar ao Topo -->
+    <a href="#topo" id="btn-topo" title="Voltar ao topo">↑</a>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Meu Blog. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Importa o script no final do body -->
+    <script src="js/script.js"></script>
+</body>
+</html>

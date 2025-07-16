@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo: Cálculo Integral</title>
+    
+    <!-- 1. Incluir o CSS do KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    
+    <!-- 2. Incluir o JavaScript do KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUbKyIyuh" crossorigin="anonymous"></script>
+    
+    <!-- 3. Incluir o script de auto-renderização do KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}, {left: '$', right: '$', display: false} ]});"></script>
+
+    <!-- Estilos para deixar a página mais parecida com os slides -->
+         <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Capítulo: Cálculo Integral</h1>
+    </header>
+
+    <main>
+        <section id="capitulo-integral">
+            <article id="intro-integral">
+                <h2>1. Introdução à Integral</h2>
+                <p>
+                    O cálculo pode ser dividido em cálculo diferencial (derivadas) e cálculo integral (integração). Na história da matemática, um dos principais problemas do cálculo foi o da <strong>Quadratura</strong>. A Quadratura foi um problema proposto pelos antigos geômetras gregos que consistia na determinação de áreas.
+                </p>
+                <p>
+                    A título de exemplo, <em>Antífon</em>, no período grego clássico, foi um dos primeiros geômetras a realizar as primeiras quadraturas da história, a quadratura do círculo. <em>Antífon</em> procurou calcular a Quadratura do círculo através de infinitos polígonos inscritos; primeiro um quadrado, depois um pentágono, na sequência um hexágono e assim sucessivamente. Apesar dessa sequência não ser concluída, esse método originou o <strong>método de exaustão</strong>, que consiste no cálculo da área de uma figura através da inserção na mesma de uma sequência de polígonos, cuja a soma de suas áreas resultam na área da figura original.
+                </p>
+
+                <blockquote>
+                    <p>
+                        "uma área pode ser pensada como sendo formada de segmentos ou “indivisíveis” e que volume pode ser considerado como composto de áreas que são volumes indivisíveis ou quase atômicos.”
+                    </p>
+                    <footer>(BOYER, 2010, p. 226)</footer>
+                </blockquote>
+                
+                <p>
+                    Somente no século XVII, os matemáticos passaram a utilizar o conhecimento de limites para as Quadraturas ou, melhor, para a integral. <em>Newton</em> e <em>Leibniz</em> sabiam da existência da ligação entre coeficientes angulares de retas tangentes e áreas entre as curvas e assim, chegaram, independentemente entre si, a fórmulas para utilizar o cálculo de áreas de maneira funcional. Esse resultado é conhecido como o <strong>Teorema Fundamental do Cálculo</strong>.
+                </p>
+            </article>
+
+            <article id="integral-indefinida">
+                <h3>1.1. Integral Indefinida</h3>
+                <p>
+                    Em muitos processos físicos, como aceleração ou velocidade de um corpo, a função derivada é conhecida. No entanto, quando há a necessidade de determinar o valor da própria função, recorre-se à <strong>antiderivada</strong> ou <strong>integral indefinida</strong>.
+                </p>
+
+                <div class="bloco definicao">
+                    <h4>Definição</h4>
+                    <p>
+                        Seja uma função \( f : I \subset \mathbb{R} \to \mathbb{R} \). A função \( F(x) \) é denominada antiderivada ou integral indefinida de \( f(x) \) se:
+                    </p>
+                    $$ F'(x) = f(x), \quad \forall x \in I $$
+                    <p>É importante destacar que a escrita é equivalente a:</p>
+                    $$ F'(x) = \frac{dF}{dx} = f(x) \quad (1) $$
+                </div>
+
+                <div class="bloco exemplo">
+                    <h4>Exemplo 1</h4>
+                    <p>
+                        Sendo as funções de variáveis reais \( F(x) = \ln(x) + x^3 \) e \( f(x) = \frac{1}{x} + 3x^2 \), verificar se \(F\) é uma integral indefinida de \(f\).
+                    </p>
+                    <h5>Solução:</h5>
+                    <p>
+                        Conforme a definição, \(F\) será uma integral indefinida de \(f\) se \( \frac{dF}{dx} = f(x) \). Assim:
+                    </p>
+                    $$
+                    \begin{align*}
+                        F'(x) &= (\ln(x))' + (x^3)' \\
+                        &= \frac{1}{x} + 3x^2 \\
+                        &= f(x).
+                    \end{align*}
+                    $$
+                    <p>Portanto, \(F(x)\) é uma integral indefinida de \(f(x)\).</p>
+                </div>
+                
+                <div class="bloco definicao">
+                    <h4>Definição (Conjunto de Integrais)</h4>
+                    <p>
+                        O conjunto de todas as integrais indefinidas de \(f\) em um intervalo \(I\) é representado por:
+                    </p>
+                    $$ \int f(x)dx = F(x) + C, \quad C \in \mathbb{R} \quad (2) $$
+                    <p>
+                        É comum referir-se à função \(f\) como o <strong>integrando</strong>. O símbolo \( \int \) foi historicamente proposto por <em>Johannes Kepler</em> e está associado ao cálculo de áreas através da soma de linhas. O termo \(dx\) é uma diferencial usada para indicar que \(x\) é a variável de integração.
+                    </p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+</body>
+</html>
