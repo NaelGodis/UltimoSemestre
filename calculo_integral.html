@@ -537,7 +537,8 @@
     <section id="Resolução de Provas">
 
     <h2> Resolução de Provas</h2>
-    <h4> 1º Prova </h4>
+
+    <h4> 1º prova </h4>
 
     <div class="bloco definicao">
         <h4>Integral Definida e Área entre curvas</h4>
@@ -808,8 +809,200 @@
                
                  
                 </div>
+                <div class="bloco definicao">
+        <h4>Lista 2 Integrais Definidas</h4>
+        <p>Calcule as integrais definidas das seguintes funções:</p>
+        <div class="bloco exemplo">
+            <p>1) $$ \int_{0}^{1} (x + 3) \,dx $$</p>
+            <p>Solução:</p>
+            <p>Primeiro, encontramos a primitiva (integral indefinida) de cada termo:</p>
+            <p>A primitiva de $$x$$ é $$ \frac{x^2}{2} $$.</p>
+            <p>A primitiva de $$3$$ é $$ 3x $$.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo, substituindo os limites de integração (1 e 0):</p>
+            $$ \left[ \frac{x^2}{2} + 3x \right]_{0}^{1} = \left( \frac{1^2}{2} + 3(1) \right) - \left( \frac{0^2}{2} + 3(0) \right) $$
+            $$ = \left( \frac{1}{2} + 3 \right) - (0) = \frac{1}{2} + \frac{6}{2} = \frac{7}{2} $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>2) $$ \int_{-1}^{1} (2x + 1) \,dx $$</p>
+            <p>Solução:</p>
+            <p>Primeiro, encontramos a primitiva de cada termo:</p>
+            <p>A primitiva de $$2x$$ é $$ 2 \cdot \frac{x^2}{2} = x^2 $$.</p>
+            <p>A primitiva de $$1$ é $ x $$.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo com os limites de -1 a 1:</p>
+            $$ \left[ x^2 + x \right]_{-1}^{1} = (1^2 + 1) - ((-1)^2 + (-1)) $$
+            $$ = (1 + 1) - (1 - 1) = 2 - 0 = 2 $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>3)</p>$$ \int_{0}^{4} \frac{1}{2} \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, encontramos a primitiva da constante $ \frac{1}{2} $, que é $ \frac{1}{2}x $.</p>
+            <p>Em seguida, aplicamos o Teorema Fundamental do Cálculo, avaliando a primitiva nos limites de integração (4 e 0):</p>
+            $$ \left[ \frac{1}{2}x \right]_{0}^{4} = \left( \frac{1}{2} \cdot 4 \right) - \left( \frac{1}{2} \cdot 0 \right) $$
+            $$ = 2 - 0 = 2 $$
+            <p>Geometricamente, isso representa a área de um retângulo de base 4 e altura 1/2. 📏</p>
+
+        </div>
+        <div class="bloco exemplo">
+            <p>4)</p>$$ \int_{-2}^{1} (x^2 - 1) \,dx $$
+            <p>Solução:</p>
+            <p>Encontramos a primitiva de cada termo: a primitiva de $ x^2 $ é $ \frac{x^3}{3} $ e a de $ -1 $ é $ -x $.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo com os limites de -2 a 1:</p>
+            $$ \left[ \frac{x^3}{3} - x \right]_{-2}^{1} = \left( \frac{1^3}{3} - 1 \right) - \left( \frac{(-2)^3}{3} - (-2) \right) $$
+            $$ = \left( \frac{1}{3} - 1 \right) - \left( \frac{-8}{3} + 2 \right) $$
+            $$ = \left( -\frac{2}{3} \right) - \left( -\frac{2}{3} \right) = 0 $$
+            <p>O resultado é zero porque a área líquida (área acima do eixo x menos a área abaixo do eixo x) no intervalo de -2 a 1 se anula. ⚖️</p>
+
+        </div>
+        <div class="bloco exemplo">
+            <p>5)</p>$$ \int_{1}^{3} x^2 \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, encontramos a primitiva (ou antiderivada) de $$x^2$$, que, pela regra da potência, é $$ \frac{x^{2+1}}{2+1} = \frac{x^3}{3} $$.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo, substituindo os limites de integração (3 e 1) na primitiva encontrada:</p>
+            $$ \left[ \frac{x^3}{3} \right]_{1}^{3} = \left( \frac{3^3}{3} \right) - \left( \frac{1^3}{3} \right) $$
+            $$ = \frac{27}{3} - \frac{1}{3} = \frac{26}{3} $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>6)</p>$$ \int_{-1}^{2} 4 \,dx $$
+            <p>Solução:</p>
+            <p>A primitiva da constante 4 é $$ 4x $$.</p>
+            <p>Aplicando o Teorema Fundamental do Cálculo com os limites de -1 a 2, temos:</p>
+            $$ \left[ 4x \right]_{-1}^{2} = (4 \cdot 2) - (4 \cdot (-1)) $$
+            $$ = 8 - (-4) = 8 + 4 = 12 $$
+            <p>Este resultado representa a área de um retângulo com altura 4 e base igual à distância entre 2 e -1, que é 3. (Área = 4 * 3 = 12). 🖼️</p>
+
+        </div>
+                <div class="bloco exemplo">
+            <p>7)</p>$$ \int_{1}^{3} \frac{1}{x^3} \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, reescrevemos a função $$ \frac{1}{x^3} $$ como $$ x^{-3} $$ para usar a regra da potência.</p>
+            <p>A primitiva de $$ x^{-3} $$ é $$ \frac{x^{-3+1}}{-3+1} = \frac{x^{-2}}{-2} = -\frac{1}{2x^2} $$.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo com os limites 3 e 1:</p>
+            $$ \left[ -\frac{1}{2x^2} \right]_{1}^{3} = \left( -\frac{1}{2(3)^2} \right) - \left( -\frac{1}{2(1)^2} \right) $$
+            $$ = \left( -\frac{1}{18} \right) - \left( -\frac{1}{2} \right) = -\frac{1}{18} + \frac{9}{18} = \frac{8}{18} = \frac{4}{9} $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>8)</p>$$ \int_{1}^{1} 5 \,dx $$
+            <p>Solução:</p>
+            <p>Esta integral tem uma propriedade especial: os limites de integração, inferior e superior, são idênticos (ambos são 1). 💡</p>
+            <p>Por definição, quando os limites de integração são iguais, a integral definida é sempre <b>zero</b>, pois não há intervalo para calcular a área.</p>
+            <p>Se fôssemos calcular, a primitiva de 5 é $$ 5x $$. Aplicando os limites:</p>
+            $$ \left[ 5x \right]_{1}^{1} = (5 \cdot 1) - (5 \cdot 1) = 5 - 5 = 0 $$
+
+        </div>
+                <div class="bloco exemplo">
+            <p>9)</p>$$ \int_{0}^{2} (x^2 + 3x - 3) \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, integramos termo a termo usando a regra da potência:</p>
+            <p>A primitiva de $$x^2$$ é $$ \frac{x^3}{3} $$.</p>
+            <p>A primitiva de $$3x$$ é $$ \frac{3x^2}{2} $$.</p>
+            <p>A primitiva de $$-3$$ é $$ -3x $$.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo com a primitiva completa $$ \left[ \frac{x^3}{3} + \frac{3x^2}{2} - 3x \right] $$ e os limites de 0 a 2:</p>
+            $$ \left( \frac{2^3}{3} + \frac{3(2)^2}{2} - 3(2) \right) - \left( \frac{0^3}{3} + \frac{3(0)^2}{2} - 3(0) \right) $$
+            $$ = \left( \frac{8}{3} + \frac{12}{2} - 6 \right) - (0) = \frac{8}{3} + 6 - 6 = \frac{8}{3} $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>10)</p>$$ \int_{0}^{1} \left(5x^3 - \frac{1}{2}\right) \,dx $$
+            <p>Solução:</p>
+            <p>Integramos cada termo separadamente:</p>
+            <p>A primitiva de $$5x^3$$ é $$ \frac{5x^4}{4} $$.</p>
+            <p>A primitiva de $$-\frac{1}{2}$$ é $$ -\frac{1}{2}x $$.</p>
+            <p>Aplicando o Teorema Fundamental do Cálculo com a primitiva $$ \left[ \frac{5x^4}{4} - \frac{x}{2} \right] $$ nos limites de 0 a 1:</p>
+            $$ \left( \frac{5(1)^4}{4} - \frac{1}{2} \right) - \left( \frac{5(0)^4}{4} - \frac{0}{2} \right) $$
+            $$ = \left( \frac{5}{4} - \frac{1}{2} \right) - (0) = \frac{5}{4} - \frac{2}{4} = \frac{3}{4} $$
+
+        </div>
+                <div class="bloco exemplo">
+            <p>11)</p>$$ \int_{1}^{1} (2x + 3) \,dx $$
+            <p>Solução:</p>
+            <p>Sempre que os limites de integração são idênticos, a integral definida é <strong>zero</strong>. Isso acontece porque não há intervalo sobre o qual calcular a área. 🎯</p>
+            <p>Para confirmar, vamos calcular. A primitiva de $$2x + 3$$ é $$x^2 + 3x$$.</p>
+            <p>Aplicando os limites de 1 a 1:</p>
+            $$ \left[ x^2 + 3x \right]_{1}^{1} = (1^2 + 3(1)) - (1^2 + 3(1)) $$
+            $$ = (1 + 3) - (1 + 3) = 4 - 4 = 0 $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>12)</p>$$ \int_{1}^{0} (2x + 3) \,dx $$
+            <p>Solução:</p>
+            <p>Note que aqui o limite superior (0) é menor que o limite inferior (1). Isso inverte o sinal do resultado.</p>
+            <p>Usando a mesma primitiva $$x^2 + 3x$$, aplicamos o Teorema Fundamental do Cálculo:</p>
+            $$ \left[ x^2 + 3x \right]_{1}^{0} = (0^2 + 3(0)) - (1^2 + 3(1)) $$
+            $$ = (0) - (1 + 3) = -4 $$
+            <p>O resultado é o negativo do que seria a integral de 0 a 1. 🔄</p>
+
+        </div>
+                <div class="bloco exemplo">
+            <p>13)</p>$$ \int_{-2}^{1} \left(\frac{1}{x^2} + x\right) \,dx $$
+            <p>Solução:</p>
+            <p><strong>Atenção:</strong> Esta é uma integral imprópria! ⚠️</p>
+            <p>A função $$f(x) = \frac{1}{x^2} + x$$ não é contínua no intervalo de integração [-2, 1], pois ela tem uma descontinuidade infinita (uma assíntota vertical) em $$x=0$$.</p>
+            <p>Como a função tende ao infinito dentro do intervalo, a área sob a curva não é finita. Portanto, a integral <strong>diverge</strong> e não possui um valor numérico.</p>
+        </div>
+        <div class="bloco exemplo">
+            <p>14)</p>$$ \int_{0}^{4} \sqrt{x} \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, reescrevemos a raiz quadrada como uma potência: $$ \sqrt{x} = x^{1/2} $$.</p>
+            <p>Agora, encontramos a primitiva usando a regra da potência:</p>
+            $$ \int x^{1/2} \,dx = \frac{x^{1/2 + 1}}{1/2 + 1} = \frac{x^{3/2}}{3/2} = \frac{2}{3}x^{3/2} $$
+            <p>Finalmente, aplicamos o Teorema Fundamental do Cálculo com os limites de 0 a 4:</p>
+            $$ \left[ \frac{2}{3}x^{3/2} \right]_{0}^{4} = \left( \frac{2}{3}(4)^{3/2} \right) - \left( \frac{2}{3}(0)^{3/2} \right) $$
+            <p>Sabendo que $$ 4^{3/2} = (\sqrt{4})^3 = 2^3 = 8 $$, temos:</p>
+            $$ = \left( \frac{2}{3} \cdot 8 \right) - (0) = \frac{16}{3} $$
+        </div>
+                <div class="bloco exemplo">
+            <p>15)</p>$$ \int_{1}^{4} \frac{1}{\sqrt{x}} \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, vamos reescrever a função para facilitar a integração. $$ \frac{1}{\sqrt{x}} $$ é o mesmo que $$ x^{-1/2} $$.</p>
+            <p>Agora, aplicamos a regra da potência para encontrar a primitiva:</p>
+            $$ \int x^{-1/2} \,dx = \frac{x^{-1/2 + 1}}{-1/2 + 1} = \frac{x^{1/2}}{1/2} = 2x^{1/2} = 2\sqrt{x} $$
+            <p>Finalmente, usamos o Teorema Fundamental do Cálculo com os limites de 1 a 4:</p>
+            $$ \left[ 2\sqrt{x} \right]_{1}^{4} = (2\sqrt{4}) - (2\sqrt{1}) $$
+            $$ = (2 \cdot 2) - (2 \cdot 1) = 4 - 2 = 2 $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>16)</p>$$ \int_{0}^{8} \sqrt[3]{x} \,dx $$
+            <p>Solução:</p>
+            <p>Reescrevemos a raiz cúbica como uma potência: $$ \sqrt[3]{x} = x^{1/3} $$.</p>
+            <p>Encontramos a primitiva com a regra da potência:</p>
+            $$ \int x^{1/3} \,dx = \frac{x^{1/3 + 1}}{1/3 + 1} = \frac{x^{4/3}}{4/3} = \frac{3}{4}x^{4/3} $$
+            <p>Aplicamos o Teorema Fundamental do Cálculo com os limites de 0 a 8:</p>
+            $$ \left[ \frac{3}{4}x^{4/3} \right]_{0}^{8} = \left( \frac{3}{4}(8)^{4/3} \right) - \left( \frac{3}{4}(0)^{4/3} \right) $$
+            <p>Sabendo que $$ 8^{4/3} = (\sqrt[3]{8})^4 = 2^4 = 16 $$, temos:</p>
+            $$ = \left( \frac{3}{4} \cdot 16 \right) - (0) = 3 \cdot 4 = 12 $$
+        </div>
+                <div class="bloco exemplo">
+            <p>17)</p>$$ \int_{-1}^{0} (x^3 - 2x + 3) \,dx $$
+            <p>Solução:</p>
+            <p>Primeiro, encontramos a primitiva de cada termo da função:</p>
+            <p>A primitiva de $$x^3$$ é $$ \frac{x^4}{4} $$.</p>
+            <p>A primitiva de $$-2x$$ é $$ -x^2 $$.</p>
+            <p>A primitiva de $$3$$ é $$ 3x $$.</p>
+            <p>Agora, aplicamos o Teorema Fundamental do Cálculo com a primitiva completa $$ \left[ \frac{x^4}{4} - x^2 + 3x \right] $$ nos limites de -1 a 0:</p>
+            $$ \left( \frac{0^4}{4} - 0^2 + 3(0) \right) - \left( \frac{(-1)^4}{4} - (-1)^2 + 3(-1) \right) $$
+            $$ = (0) - \left( \frac{1}{4} - 1 - 3 \right) = - \left( \frac{1}{4} - 4 \right) = - \left( \frac{1}{4} - \frac{16}{4} \right) = - \left( -\frac{15}{4} \right) = \frac{15}{4} $$
+
+        </div>
+        <div class="bloco exemplo">
+            <p>18)</p>$$ \int_{1}^{8} \frac{2}{\sqrt[3]{x}} \,dx $$
+            <p>Solução:</p>
+            <p>Reescrevemos a função para usar a regra da potência: $$ \frac{2}{\sqrt[3]{x}} = 2x^{-1/3} $$.</p>
+            <p>Encontramos a primitiva:</p>
+            $$ \int 2x^{-1/3} \,dx = 2 \cdot \frac{x^{-1/3 + 1}}{-1/3 + 1} = 2 \cdot \frac{x^{2/3}}{2/3} = 2 \cdot \frac{3}{2}x^{2/3} = 3x^{2/3} $$
+            <p>Aplicamos o Teorema Fundamental do Cálculo com os limites de 1 a 8:</p>
+            $$ \left[ 3x^{2/3} \right]_{1}^{8} = \left( 3(8)^{2/3} \right) - \left( 3(1)^{2/3} \right) $$
+            <p>Sabendo que $$ 8^{2/3} = (\sqrt[3]{8})^2 = 2^2 = 4 $$, temos:</p>
+            $$ = (3 \cdot 4) - (3 \cdot 1) = 12 - 3 = 9 $$
+        </div>
+        </div>
             </article>
             </section>
+    
 </article>
 
         </article>
