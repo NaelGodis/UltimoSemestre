@@ -542,7 +542,41 @@
     <div class="bloco definicao">
         <h4>Integral Definida e Área entre curvas</h4>
         <p>Calcule as seguintes integrais:</p>
+        <div class="bloco exemplo">
+    <p>1. Determine a primitiva da função $$ f(x) = \sqrt{x^3}, \quad x \ge 0 $$</p>
+    <p>Solução:</p>
+    <p>Primeiro, reescrevemos a função usando a notação de potência:</p>
+    $$ f(x) = \sqrt{x^3} = (x^3)^{\frac{1}{2}} = x^{\frac{3}{2}} $$
+    <p>Agora, usamos a regra da potência para integração, $$ \int x^n \,dx = \frac{x^{n+1}}{n+1} + C $$</p>
+    $$ F(x) = \int x^{\frac{3}{2}} \,dx = \frac{x^{\frac{3}{2}+1}}{\frac{3}{2}+1} + C = \frac{x^{\frac{5}{2}}}{\frac{5}{2}} + C $$
+    <p>Simplificando, a primitiva é:</p>
+    $$ F(x) = \frac{2}{5}x^{\frac{5}{2}} + C $$
+</div>
 
+<div class="bloco exemplo">
+    <p>2. A taxa de variação da biomassa de uma planta no período de tempo x ≥ 0 é dada pela função $$ e^x + \frac{1}{x+1} $$. Determine a função da massa y(x).</p>
+    <p>Solução:</p>
+    <p>A taxa de variação é a derivada da função da massa. Portanto, para encontrar y(x), precisamos integrar a função dada:</p>
+    $$ y(x) = \int \left(e^x + \frac{1}{x+1}\right) \,dx $$
+    <p>Separamos a integral em duas partes:</p>
+    $$ y(x) = \int e^x \,dx + \int \frac{1}{x+1} \,dx $$
+    <p>A integral de $$e^x$$ é $$e^x$$. A integral de $$\frac{1}{x+1}$$ é um caso conhecido que resulta em um logaritmo natural:</p>
+    $$ y(x) = e^x + \ln|x+1| + C $$
+    <p>Como o tempo $$x \ge 0$$, $$x+1$$ será sempre positivo, então podemos remover o módulo:</p>
+    $$ y(x) = e^x + \ln(x+1) + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>3. Dada a função $$ F(x) = \cos(x^2 + 1) $$, determine a função f para a qual F seja sua primitiva.</p>
+    <p>Solução:</p>
+    <p>Se F(x) é a primitiva (ou antiderivada) de f(x), então f(x) é a derivada de F(x). Ou seja, $$ f(x) = F'(x) $$.</p>
+    <p>Precisamos derivar $$ F(x) = \cos(x^2 + 1) $$ usando a Regra da Cadeia:</p>
+    $$ f(x) = \frac{d}{dx} \left( \cos(x^2 + 1) \right) $$
+    $$ f(x) = -\sin(x^2 + 1) \cdot \frac{d}{dx}(x^2 + 1) $$
+    $$ f(x) = -\sin(x^2 + 1) \cdot (2x) $$
+    <p>Portanto, a função é:</p>
+    $$ f(x) = -2x \sin(x^2 + 1) $$
+</div>
         <div class="bloco exemplo">
             <p>4) Integral de |sen x| de 0 a 2π</p>
             $$ \int_{0}^{2\pi} |\sin x| \,dx $$
