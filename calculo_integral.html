@@ -52,9 +52,9 @@
                     <li> <h4><a href="#forca-fluido">3.4 Força De Fluido Sobre Uma Superfície Vertical</a></h4></li>
 
                     <li><h3><a href="#sequencia">4. Sequência e Séries</a></h3></li>
-                    <li> <h4><a href="#sequencias">4.1 Trabalho</a></h4></li>
-                    <li> <h4><a href="#series">4.2 Trabalho</a></h4></li>
-                    <li> <h4><a href="#series-taylor-maclaurin">4.3 Trabalho</a></h4></li>
+                    <li> <h4><a href="#sequencias">4.1 Sequência</a></h4></li>
+                    <li> <h4><a href="#series">4.2 Series</a></h4></li>
+                    <li> <h4><a href="#series-taylor-maclaurin">4.3 Series De Taylor e Maclaurin</a></h4></li>
 
                     <li><h3><a href="#Listas">5.Listas</a></h3></li>
 
@@ -537,12 +537,47 @@
     <section id="Resolução de Provas">
 
     <h2> Resolução de Provas</h2>
+
     <h4> 1º prova </h4>
 
     <div class="bloco definicao">
         <h4>Integral Definida e Área entre curvas</h4>
         <p>Calcule as seguintes integrais:</p>
+        <div class="bloco exemplo">
+    <p>1. Determine a primitiva da função $$ f(x) = \sqrt{x^3}, \quad x \ge 0 $$</p>
+    <p>Solução:</p>
+    <p>Primeiro, reescrevemos a função usando a notação de potência:</p>
+    $$ f(x) = \sqrt{x^3} = (x^3)^{\frac{1}{2}} = x^{\frac{3}{2}} $$
+    <p>Agora, usamos a regra da potência para integração, $$ \int x^n \,dx = \frac{x^{n+1}}{n+1} + C $$</p>
+    $$ F(x) = \int x^{\frac{3}{2}} \,dx = \frac{x^{\frac{3}{2}+1}}{\frac{3}{2}+1} + C = \frac{x^{\frac{5}{2}}}{\frac{5}{2}} + C $$
+    <p>Simplificando, a primitiva é:</p>
+    $$ F(x) = \frac{2}{5}x^{\frac{5}{2}} + C $$
+</div>
 
+<div class="bloco exemplo">
+    <p>2. A taxa de variação da biomassa de uma planta no período de tempo x ≥ 0 é dada pela função $$ e^x + \frac{1}{x+1} $$. Determine a função da massa y(x).</p>
+    <p>Solução:</p>
+    <p>A taxa de variação é a derivada da função da massa. Portanto, para encontrar y(x), precisamos integrar a função dada:</p>
+    $$ y(x) = \int \left(e^x + \frac{1}{x+1}\right) \,dx $$
+    <p>Separamos a integral em duas partes:</p>
+    $$ y(x) = \int e^x \,dx + \int \frac{1}{x+1} \,dx $$
+    <p>A integral de $$e^x$$ é $$e^x$$. A integral de $$\frac{1}{x+1}$$ é um caso conhecido que resulta em um logaritmo natural:</p>
+    $$ y(x) = e^x + \ln|x+1| + C $$
+    <p>Como o tempo $$x \ge 0$$, $$x+1$$ será sempre positivo, então podemos remover o módulo:</p>
+    $$ y(x) = e^x + \ln(x+1) + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>3. Dada a função $$ F(x) = \cos(x^2 + 1) $$, determine a função f para a qual F seja sua primitiva.</p>
+    <p>Solução:</p>
+    <p>Se F(x) é a primitiva (ou antiderivada) de f(x), então f(x) é a derivada de F(x). Ou seja, $$ f(x) = F'(x) $$.</p>
+    <p>Precisamos derivar $$ F(x) = \cos(x^2 + 1) $$ usando a Regra da Cadeia:</p>
+    $$ f(x) = \frac{d}{dx} \left( \cos(x^2 + 1) \right) $$
+    $$ f(x) = -\sin(x^2 + 1) \cdot \frac{d}{dx}(x^2 + 1) $$
+    $$ f(x) = -\sin(x^2 + 1) \cdot (2x) $$
+    <p>Portanto, a função é:</p>
+    $$ f(x) = -2x \sin(x^2 + 1) $$
+</div>
         <div class="bloco exemplo">
             <p>4) Integral de |sen x| de 0 a 2π</p>
             $$ \int_{0}^{2\pi} |\sin x| \,dx $$
@@ -556,7 +591,7 @@
             $$ \int_{0}^{\pi} \sin x \,dx = [-\cos x]_{0}^{\pi} = (-\cos(\pi)) - (-\cos(0)) = -(-1) - (-1) = 1 + 1 = 2 $$
             $$ \int_{\pi}^{2\pi} -\sin x \,dx = [\cos x]_{\pi}^{2\pi} = \cos(2\pi) - \cos(\pi) = 1 - (-1) = 2 $$
             <p>Somando os resultados:</p>
-            $$ 2 + 2 = 4 $$
+            $$ 2 + 2 = 4 \text{ unidades de área} $$
         </div>
 
         <div class="bloco exemplo">
@@ -573,7 +608,7 @@
             $$ A = \left( \frac{2^2}{2} + 2(2) - \frac{2^3}{3} \right) - \left( \frac{(-1)^2}{2} + 2(-1) - \frac{(-1)^3}{3} \right) $$
             $$ A = \left( 2 + 4 - \frac{8}{3} \right) - \left( \frac{1}{2} - 2 + \frac{1}{3} \right) $$
             $$ A = \left( 6 - \frac{8}{3} \right) - \left( \frac{3-12+2}{6} \right) = \left( \frac{18-8}{3} \right) - \left( -\frac{7}{6} \right) $$
-            $$ A = \frac{10}{3} + \frac{7}{6} = \frac{20}{6} + \frac{7}{6} = \frac{27}{6} = \frac{9}{2} $$
+            $$ A = \frac{10}{3} + \frac{7}{6} = \frac{20}{6} + \frac{7}{6} = \frac{27}{6} = \frac{9}{2} \text{ unidades de área} $$
         </div>
     </div>
 
@@ -586,17 +621,186 @@
                 <div class="bloco definicao">
                     <h4>Lista Primitivas</h4>
                     <p>Calcule as primitivas das seguintes funções:</p>
-                     <div class="bloco exemplo">
-                    <p>a)</p>$$ \int x dx$$
-                    <p>Solução:</p>
-                    $$ \frac{x¹⁺¹}{1+1} = \frac{x²}{2}$$
+                    <div class="bloco exemplo">
+    <p>a) Calcule $$ \int x \,dx $$</p>
+    <p>Solução:</p>
+    <p>A função é $$x$$, que é o mesmo que $$x^1$$. Usamos a regra da potência para integração, $$ \int x^n \,dx = \frac{x^{n+1}}{n+1} + C $$, com n=1.</p>
+    $$ \int x^1 \,dx = \frac{x^{1+1}}{1+1} + C $$
+    <p>O resultado é:</p>
+    $$ \frac{x^2}{2} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>b) Calcule $$ \int 3 \,dx $$</p>
+    <p>Solução:</p>
+    <p>Aqui, integramos uma constante. A regra é $$ \int k \,dx = kx + C $$.</p>
+    <p>O resultado é:</p>
+    $$ 3x + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>c) Calcule $$ \int (3x + 1) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Usamos a regra da soma para separar a integral em duas partes:</p>
+    $$ \int 3x \,dx + \int 1 \,dx $$
+    <p>Integramos cada parte: $$ \int 3x \,dx = 3 \frac{x^2}{2} $$ e $$ \int 1 \,dx = x $$.</p>
+    <p>Somando os resultados e adicionando a constante de integração:</p>
+    $$ 3\frac{x^2}{2} + x + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>d) Calcule $$ \int (x^2 + x + 1) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral em três partes:</p>
+    $$ \int x^2 \,dx + \int x \,dx + \int 1 \,dx $$
+    <p>Aplicando a regra da potência para cada termo:</p>
+    $$ \frac{x^3}{3} + \frac{x^2}{2} + x + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>e) Calcule $$ \int x^3 \,dx $$</p>
+    <p>Solução:</p>
+    <p>Usamos a regra da potência com n=3:</p>
+    $$ \int x^3 \,dx = \frac{x^{3+1}}{3+1} + C $$
+    <p>O resultado é:</p>
+    $$ \frac{x^4}{4} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>f) Calcule $$ \int (x^3 + 2x + 3) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral e aplicamos as regras de integração para cada termo:</p>
+    $$ \int x^3 \,dx + \int 2x \,dx + \int 3 \,dx = \frac{x^4}{4} + 2\frac{x^2}{2} + 3x + C $$
+    <p>Simplificando, temos:</p>
+    $$ \frac{x^4}{4} + x^2 + 3x + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>g) Calcule $$ \int \frac{1}{x^2} \,dx $$</p>
+    <p>Solução:</p>
+    <p>Primeiro, reescrevemos a fração como uma potência negativa: $$ \frac{1}{x^2} = x^{-2} $$.</p>
+    <p>Agora, usamos a regra da potência com n=-2:</p>
+    $$ \int x^{-2} \,dx = \frac{x^{-2+1}}{-2+1} + C = \frac{x^{-1}}{-1} + C $$
+    <p>Reescrevendo o resultado de volta para a forma de fração:</p>
+    $$ -\frac{1}{x} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>h) Calcule $$ \int (x + \frac{1}{x^3}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral e reescrevemos a fração como potência: $$ \int x \,dx + \int x^{-3} \,dx $$.</p>
+    <p>Integramos cada termo:</p>
+    $$ \frac{x^2}{2} + \frac{x^{-3+1}}{-3+1} + C = \frac{x^2}{2} + \frac{x^{-2}}{-2} + C $$
+    <p>Simplificando, obtemos:</p>
+    $$ \frac{x^2}{2} - \frac{1}{2x^2} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>i) Calcule $$ \int \sqrt{x} \,dx $$</p>
+    <p>Solução:</p>
+    <p>Primeiro, reescrevemos a raiz como uma potência: $$ \sqrt{x} = x^{\frac{1}{2}} $$.</p>
+    <p>Usamos a regra da potência com n=1/2:</p>
+    $$ \int x^{\frac{1}{2}} \,dx = \frac{x^{\frac{1}{2}+1}}{\frac{1}{2}+1} + C = \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + C $$
+    <p>Simplificando a divisão por uma fração:</p>
+    $$ \frac{2}{3}x^{\frac{3}{2}} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>j) Calcule $$ \int \sqrt[3]{x} \,dx $$</p>
+    <p>Solução:</p>
+    <p>Reescrevemos a raiz cúbica como potência: $$ \sqrt[3]{x} = x^{\frac{1}{3}} $$.</p>
+    <p>Aplicamos a regra da potência com n=1/3:</p>
+    $$ \int x^{\frac{1}{3}} \,dx = \frac{x^{\frac{1}{3}+1}}{\frac{1}{3}+1} + C = \frac{x^{\frac{4}{3}}}{\frac{4}{3}} + C $$
+    <p>Simplificando:</p>
+    $$ \frac{3}{4}x^{\frac{4}{3}} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>l) Calcule $$ \int (x + \frac{1}{x}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral: $$ \int x \,dx + \int \frac{1}{x} \,dx $$.</p>
+    <p>A integral de $$ \frac{1}{x} $$ é um caso especial que resulta no logaritmo natural.</p>
+    <p>O resultado é:</p>
+    $$ \frac{x^2}{2} + \ln|x| + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>m) Calcule $$ \int (2 + \sqrt[4]{x}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral e reescrevemos a raiz como potência: $$ \int 2 \,dx + \int x^{\frac{1}{4}} \,dx $$.</p>
+    <p>Integramos cada termo:</p>
+    $$ 2x + \frac{x^{\frac{1}{4}+1}}{\frac{1}{4}+1} + C = 2x + \frac{x^{\frac{5}{4}}}{\frac{5}{4}} + C $$
+    <p>Simplificando:</p>
+    $$ 2x + \frac{4}{5}x^{\frac{5}{4}} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>n) Calcule $$ \int (ax + b) \,dx, \text{ a e b constantes} $$</p>
+    <p>Solução:</p>
+    <p>Tratamos 'a' e 'b' como constantes e separamos a integral:</p>
+    $$ \int ax \,dx + \int b \,dx = a \int x \,dx + b \int 1 \,dx $$
+    <p>O resultado é:</p>
+    $$ a\frac{x^2}{2} + bx + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>o) Calcule $$ \int (3x^2 + x + \frac{1}{x^3}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral e reescrevemos a fração:</p>
+    $$ \int 3x^2 \,dx + \int x \,dx + \int x^{-3} \,dx $$
+    <p>Integramos cada termo:</p>
+    $$ 3\frac{x^3}{3} + \frac{x^2}{2} + \frac{x^{-2}}{-2} + C $$
+    <p>Simplificando:</p>
+    $$ x^3 + \frac{x^2}{2} - \frac{1}{2x^2} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>p) Calcule $$ \int (\sqrt{x} + \frac{1}{x^2}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Reescrevemos os termos como potências e separamos:</p>
+    $$ \int x^{\frac{1}{2}} \,dx + \int x^{-2} \,dx $$
+    <p>Integramos cada parte:</p>
+    $$ \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + \frac{x^{-1}}{-1} + C $$
+    <p>Simplificando:</p>
+    $$ \frac{2}{3}x^{\frac{3}{2}} - \frac{1}{x} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>q) Calcule $$ \int (\frac{2}{x} + \frac{3}{x^2}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos e reescrevemos a integral:</p>
+    $$ 2 \int \frac{1}{x} \,dx + 3 \int x^{-2} \,dx $$
+    <p>Integramos, lembrando do caso especial do logaritmo:</p>
+    $$ 2\ln|x| + 3\frac{x^{-1}}{-1} + C $$
+    <p>Simplificando:</p>
+    $$ 2\ln|x| - \frac{3}{x} + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>r) Calcule $$ \int (3\sqrt[5]{x^2} + 3) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Reescrevemos a raiz como potência e separamos a integral:</p>
+    $$ 3 \int x^{\frac{2}{5}} \,dx + \int 3 \,dx $$
+    <p>Aplicamos a regra da potência e a regra da constante:</p>
+    $$ 3 \frac{x^{\frac{2}{5}+1}}{\frac{2}{5}+1} + 3x + C = 3 \frac{x^{\frac{7}{5}}}{\frac{7}{5}} + 3x + C $$
+    <p>Simplificando:</p>
+    $$ \frac{15}{7}x^{\frac{7}{5}} + 3x + C $$
+</div>
+
+<div class="bloco exemplo">
+    <p>s) Calcule $$ \int (2x^3 - \frac{1}{x^4}) \,dx $$</p>
+    <p>Solução:</p>
+    <p>Separamos a integral e reescrevemos a fração:</p>
+    $$ \int 2x^3 \,dx - \int x^{-4} \,dx $$
+    <p>Integramos cada termo:</p>
+    $$ 2\frac{x^4}{4} - \frac{x^{-4+1}}{-4+1} + C = \frac{x^4}{2} - \frac{x^{-3}}{-3} + C $$
+    <p>Simplificando, notando que menos com menos dá mais:</p>
+    $$ \frac{x^4}{2} + \frac{1}{3x^3} + C $$
+</div>
                     
 
                 </div>
-                <div class="bloco exemplo">
-                    <p>b)</p>$$ \int 3 dx$$
-                    <p>Solução:</p>
-                    $$ \frac{3x¹⁺¹}{1+1} = \frac{3x²}{2}$$
+                 
                     
 
                 </div>
