@@ -537,7 +537,7 @@
     <section id="Resolução de Provas">
 
     <h2> Resolução de Provas</h2>
-    <h4> 2º prova </h4>
+    <h4> 1º Prova </h4>
 
     <div class="bloco definicao">
         <h4>Integral Definida e Área entre curvas</h4>
@@ -620,112 +620,181 @@
                 <div class="bloco definicao">
                     <h4>Lista Primitivas</h4>
                     <p>Calcule as primitivas das seguintes funções:</p>
-                     <div class="bloco exemplo">
-    <p>a)</p>$$ \int x \,dx $$
+                    <div class="bloco exemplo">
+    <p>a) Calcule $$ \int x \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^1 \,dx = \frac{x^{1+1}}{1+1} + C = \frac{x^2}{2} + C $$
+    <p>A função é $$x$$, que é o mesmo que $$x^1$$. Usamos a regra da potência para integração, $$ \int x^n \,dx = \frac{x^{n+1}}{n+1} + C $$, com n=1.</p>
+    $$ \int x^1 \,dx = \frac{x^{1+1}}{1+1} + C $$
+    <p>O resultado é:</p>
+    $$ \frac{x^2}{2} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>b)</p>$$ \int 3 \,dx $$
+    <p>b) Calcule $$ \int 3 \,dx $$</p>
     <p>Solução:</p>
-    $$ \int 3 \,dx = 3x + C $$
+    <p>Aqui, integramos uma constante. A regra é $$ \int k \,dx = kx + C $$.</p>
+    <p>O resultado é:</p>
+    $$ 3x + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>c)</p>$$ \int (3x + 1) \,dx $$
+    <p>c) Calcule $$ \int (3x + 1) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int 3x \,dx + \int 1 \,dx = 3 \frac{x^2}{2} + x + C $$
+    <p>Usamos a regra da soma para separar a integral em duas partes:</p>
+    $$ \int 3x \,dx + \int 1 \,dx $$
+    <p>Integramos cada parte: $$ \int 3x \,dx = 3 \frac{x^2}{2} $$ e $$ \int 1 \,dx = x $$.</p>
+    <p>Somando os resultados e adicionando a constante de integração:</p>
+    $$ 3\frac{x^2}{2} + x + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>d)</p>$$ \int (x^2 + x + 1) \,dx $$
+    <p>d) Calcule $$ \int (x^2 + x + 1) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^2 \,dx + \int x \,dx + \int 1 \,dx = \frac{x^3}{3} + \frac{x^2}{2} + x + C $$
+    <p>Separamos a integral em três partes:</p>
+    $$ \int x^2 \,dx + \int x \,dx + \int 1 \,dx $$
+    <p>Aplicando a regra da potência para cada termo:</p>
+    $$ \frac{x^3}{3} + \frac{x^2}{2} + x + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>e)</p>$$ \int x^3 \,dx $$
+    <p>e) Calcule $$ \int x^3 \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^3 \,dx = \frac{x^{3+1}}{3+1} + C = \frac{x^4}{4} + C $$
+    <p>Usamos a regra da potência com n=3:</p>
+    $$ \int x^3 \,dx = \frac{x^{3+1}}{3+1} + C $$
+    <p>O resultado é:</p>
+    $$ \frac{x^4}{4} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>f)</p>$$ \int (x^3 + 2x + 3) \,dx $$
+    <p>f) Calcule $$ \int (x^3 + 2x + 3) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^3 \,dx + \int 2x \,dx + \int 3 \,dx = \frac{x^4}{4} + 2\frac{x^2}{2} + 3x + C = \frac{x^4}{4} + x^2 + 3x + C $$
+    <p>Separamos a integral e aplicamos as regras de integração para cada termo:</p>
+    $$ \int x^3 \,dx + \int 2x \,dx + \int 3 \,dx = \frac{x^4}{4} + 2\frac{x^2}{2} + 3x + C $$
+    <p>Simplificando, temos:</p>
+    $$ \frac{x^4}{4} + x^2 + 3x + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>g)</p>$$ \int \frac{1}{x^2} \,dx $$
+    <p>g) Calcule $$ \int \frac{1}{x^2} \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^{-2} \,dx = \frac{x^{-2+1}}{-2+1} + C = \frac{x^{-1}}{-1} + C = -\frac{1}{x} + C $$
+    <p>Primeiro, reescrevemos a fração como uma potência negativa: $$ \frac{1}{x^2} = x^{-2} $$.</p>
+    <p>Agora, usamos a regra da potência com n=-2:</p>
+    $$ \int x^{-2} \,dx = \frac{x^{-2+1}}{-2+1} + C = \frac{x^{-1}}{-1} + C $$
+    <p>Reescrevendo o resultado de volta para a forma de fração:</p>
+    $$ -\frac{1}{x} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>h)</p>$$ \int (x + \frac{1}{x^3}) \,dx $$
+    <p>h) Calcule $$ \int (x + \frac{1}{x^3}) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x \,dx + \int x^{-3} \,dx = \frac{x^2}{2} + \frac{x^{-3+1}}{-3+1} + C = \frac{x^2}{2} + \frac{x^{-2}}{-2} + C = \frac{x^2}{2} - \frac{1}{2x^2} + C $$
+    <p>Separamos a integral e reescrevemos a fração como potência: $$ \int x \,dx + \int x^{-3} \,dx $$.</p>
+    <p>Integramos cada termo:</p>
+    $$ \frac{x^2}{2} + \frac{x^{-3+1}}{-3+1} + C = \frac{x^2}{2} + \frac{x^{-2}}{-2} + C $$
+    <p>Simplificando, obtemos:</p>
+    $$ \frac{x^2}{2} - \frac{1}{2x^2} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>i)</p>$$ \int \sqrt{x} \,dx $$
+    <p>i) Calcule $$ \int \sqrt{x} \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^{\frac{1}{2}} \,dx = \frac{x^{\frac{1}{2}+1}}{\frac{1}{2}+1} + C = \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + C = \frac{2}{3}x^{\frac{3}{2}} + C $$
+    <p>Primeiro, reescrevemos a raiz como uma potência: $$ \sqrt{x} = x^{\frac{1}{2}} $$.</p>
+    <p>Usamos a regra da potência com n=1/2:</p>
+    $$ \int x^{\frac{1}{2}} \,dx = \frac{x^{\frac{1}{2}+1}}{\frac{1}{2}+1} + C = \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + C $$
+    <p>Simplificando a divisão por uma fração:</p>
+    $$ \frac{2}{3}x^{\frac{3}{2}} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>j)</p>$$ \int \sqrt[3]{x} \,dx $$
+    <p>j) Calcule $$ \int \sqrt[3]{x} \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^{\frac{1}{3}} \,dx = \frac{x^{\frac{1}{3}+1}}{\frac{1}{3}+1} + C = \frac{x^{\frac{4}{3}}}{\frac{4}{3}} + C = \frac{3}{4}x^{\frac{4}{3}} + C $$
+    <p>Reescrevemos a raiz cúbica como potência: $$ \sqrt[3]{x} = x^{\frac{1}{3}} $$.</p>
+    <p>Aplicamos a regra da potência com n=1/3:</p>
+    $$ \int x^{\frac{1}{3}} \,dx = \frac{x^{\frac{1}{3}+1}}{\frac{1}{3}+1} + C = \frac{x^{\frac{4}{3}}}{\frac{4}{3}} + C $$
+    <p>Simplificando:</p>
+    $$ \frac{3}{4}x^{\frac{4}{3}} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>l)</p>$$ \int (x + \frac{1}{x}) \,dx $$
+    <p>l) Calcule $$ \int (x + \frac{1}{x}) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x \,dx + \int \frac{1}{x} \,dx = \frac{x^2}{2} + \ln|x| + C $$
+    <p>Separamos a integral: $$ \int x \,dx + \int \frac{1}{x} \,dx $$.</p>
+    <p>A integral de $$ \frac{1}{x} $$ é um caso especial que resulta no logaritmo natural.</p>
+    <p>O resultado é:</p>
+    $$ \frac{x^2}{2} + \ln|x| + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>m)</p>$$ \int (2 + \sqrt[4]{x}) \,dx $$
+    <p>m) Calcule $$ \int (2 + \sqrt[4]{x}) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int 2 \,dx + \int x^{\frac{1}{4}} \,dx = 2x + \frac{x^{\frac{1}{4}+1}}{\frac{1}{4}+1} + C = 2x + \frac{x^{\frac{5}{4}}}{\frac{5}{4}} + C = 2x + \frac{4}{5}x^{\frac{5}{4}} + C $$
+    <p>Separamos a integral e reescrevemos a raiz como potência: $$ \int 2 \,dx + \int x^{\frac{1}{4}} \,dx $$.</p>
+    <p>Integramos cada termo:</p>
+    $$ 2x + \frac{x^{\frac{1}{4}+1}}{\frac{1}{4}+1} + C = 2x + \frac{x^{\frac{5}{4}}}{\frac{5}{4}} + C $$
+    <p>Simplificando:</p>
+    $$ 2x + \frac{4}{5}x^{\frac{5}{4}} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>n)</p>$$ \int (ax + b) \,dx, \text{ a e b constantes} $$
+    <p>n) Calcule $$ \int (ax + b) \,dx, \text{ a e b constantes} $$</p>
     <p>Solução:</p>
-    $$ \int ax \,dx + \int b \,dx = a \frac{x^2}{2} + bx + C $$
+    <p>Tratamos 'a' e 'b' como constantes e separamos a integral:</p>
+    $$ \int ax \,dx + \int b \,dx = a \int x \,dx + b \int 1 \,dx $$
+    <p>O resultado é:</p>
+    $$ a\frac{x^2}{2} + bx + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>o)</p>$$ \int (3x^2 + x + \frac{1}{x^3}) \,dx $$
+    <p>o) Calcule $$ \int (3x^2 + x + \frac{1}{x^3}) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int 3x^2 \,dx + \int x \,dx + \int x^{-3} \,dx = 3\frac{x^3}{3} + \frac{x^2}{2} + \frac{x^{-2}}{-2} + C = x^3 + \frac{x^2}{2} - \frac{1}{2x^2} + C $$
+    <p>Separamos a integral e reescrevemos a fração:</p>
+    $$ \int 3x^2 \,dx + \int x \,dx + \int x^{-3} \,dx $$
+    <p>Integramos cada termo:</p>
+    $$ 3\frac{x^3}{3} + \frac{x^2}{2} + \frac{x^{-2}}{-2} + C $$
+    <p>Simplificando:</p>
+    $$ x^3 + \frac{x^2}{2} - \frac{1}{2x^2} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>p)</p>$$ \int (\sqrt{x} + \frac{1}{x^2}) \,dx $$
+    <p>p) Calcule $$ \int (\sqrt{x} + \frac{1}{x^2}) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int x^{\frac{1}{2}} \,dx + \int x^{-2} \,dx = \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + \frac{x^{-1}}{-1} + C = \frac{2}{3}x^{\frac{3}{2}} - \frac{1}{x} + C $$
+    <p>Reescrevemos os termos como potências e separamos:</p>
+    $$ \int x^{\frac{1}{2}} \,dx + \int x^{-2} \,dx $$
+    <p>Integramos cada parte:</p>
+    $$ \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + \frac{x^{-1}}{-1} + C $$
+    <p>Simplificando:</p>
+    $$ \frac{2}{3}x^{\frac{3}{2}} - \frac{1}{x} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>q)</p>$$ \int (\frac{2}{x} + \frac{3}{x^2}) \,dx $$
+    <p>q) Calcule $$ \int (\frac{2}{x} + \frac{3}{x^2}) \,dx $$</p>
     <p>Solução:</p>
-    $$ 2 \int \frac{1}{x} \,dx + 3 \int x^{-2} \,dx = 2\ln|x| + 3\frac{x^{-1}}{-1} + C = 2\ln|x| - \frac{3}{x} + C $$
+    <p>Separamos e reescrevemos a integral:</p>
+    $$ 2 \int \frac{1}{x} \,dx + 3 \int x^{-2} \,dx $$
+    <p>Integramos, lembrando do caso especial do logaritmo:</p>
+    $$ 2\ln|x| + 3\frac{x^{-1}}{-1} + C $$
+    <p>Simplificando:</p>
+    $$ 2\ln|x| - \frac{3}{x} + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>r)</p>$$ \int (3\sqrt[5]{x^2} + 3) \,dx $$
+    <p>r) Calcule $$ \int (3\sqrt[5]{x^2} + 3) \,dx $$</p>
     <p>Solução:</p>
-    $$ 3 \int x^{\frac{2}{5}} \,dx + \int 3 \,dx = 3 \frac{x^{\frac{2}{5}+1}}{\frac{2}{5}+1} + 3x + C = 3 \frac{x^{\frac{7}{5}}}{\frac{7}{5}} + 3x + C = \frac{15}{7}x^{\frac{7}{5}} + 3x + C $$
+    <p>Reescrevemos a raiz como potência e separamos a integral:</p>
+    $$ 3 \int x^{\frac{2}{5}} \,dx + \int 3 \,dx $$
+    <p>Aplicamos a regra da potência e a regra da constante:</p>
+    $$ 3 \frac{x^{\frac{2}{5}+1}}{\frac{2}{5}+1} + 3x + C = 3 \frac{x^{\frac{7}{5}}}{\frac{7}{5}} + 3x + C $$
+    <p>Simplificando:</p>
+    $$ \frac{15}{7}x^{\frac{7}{5}} + 3x + C $$
 </div>
 
 <div class="bloco exemplo">
-    <p>s)</p>$$ \int (2x^3 - \frac{1}{x^4}) \,dx $$
+    <p>s) Calcule $$ \int (2x^3 - \frac{1}{x^4}) \,dx $$</p>
     <p>Solução:</p>
-    $$ \int 2x^3 \,dx - \int x^{-4} \,dx = 2\frac{x^4}{4} - \frac{x^{-4+1}}{-4+1} + C = \frac{x^4}{2} - \frac{x^{-3}}{-3} + C = \frac{x^4}{2} + \frac{1}{3x^3} + C $$
+    <p>Separamos a integral e reescrevemos a fração:</p>
+    $$ \int 2x^3 \,dx - \int x^{-4} \,dx $$
+    <p>Integramos cada termo:</p>
+    $$ 2\frac{x^4}{4} - \frac{x^{-4+1}}{-4+1} + C = \frac{x^4}{2} - \frac{x^{-3}}{-3} + C $$
+    <p>Simplificando, notando que menos com menos dá mais:</p>
+    $$ \frac{x^4}{2} + \frac{1}{3x^3} + C $$
 </div>
                     
 
