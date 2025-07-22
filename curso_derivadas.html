@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Completo de Derivadas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        nav {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 40px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+        }
+
+        h4 {
+            color: #555;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.1em;
+        }
+
+        .formula-box {
+            background: #f8f9ff;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .example-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .theorem-box {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .exercise-box {
+            background: #fce4ec;
+            border: 2px solid #e91e63;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .note {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .graph-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .author-info {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso Completo de Derivadas</h1>
+            <p class="subtitle">Um guia abrangente para dominar o cálculo diferencial</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#definicao">Definição Formal</a></li>
+                <li><a href="#regras">Regras de Derivação</a></li>
+                <li><a href="#funcoes">Funções Elementares</a></li>
+                <li><a href="#aplicacoes">Aplicações</a></li>
+                <li><a href="#ordem-superior">Derivadas Superiores</a></li>
+                <li><a href="#exercicios">Exercícios</a></li>
+            </ul>
+            <h2></h2>
+            <ul><li><a href="calculo_integral.html">voltar</a></li></ul>
+        </nav>
+
+        <section id="introducao" class="section">
+            <h2>1. Introdução às Derivadas</h2>
+            
+            <h3>1.1 Conceito Intuitivo</h3>
+            <p>A derivada é um dos conceitos fundamentais do cálculo diferencial, representando a taxa de variação instantânea de uma função. Para compreender intuitivamente este conceito, imagine que você está dirigindo um carro e observando o velocímetro. A velocidade mostrada no velocímetro em qualquer momento específico é análoga à derivada de uma função - ela nos diz quão rapidamente algo está mudando naquele exato instante.</p>
+
+            <p>Matematicamente, se temos uma função $f(x)$ que representa a posição de um objeto em função do tempo, a derivada $f'(x)$ nos dará a velocidade instantânea desse objeto. Este conceito se estende para qualquer tipo de função: a derivada sempre representa a taxa de variação instantânea da variável dependente em relação à variável independente.</p>
+
+            <h3>1.2 Interpretação Geométrica</h3>
+            <p>Do ponto de vista geométrico, a derivada de uma função em um ponto específico representa a inclinação da reta tangente à curva da função naquele ponto. Esta interpretação é fundamental para visualizar o comportamento de funções e compreender conceitos como crescimento, decrescimento e pontos críticos.</p>
+
+            <div class="formula-box">
+                <p><strong>Inclinação da reta tangente:</strong></p>
+                $$m = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} = f'(x)$$
+            </div>
+
+            <p>Quando a derivada é positiva, a função está crescendo naquele ponto, o que significa que a reta tangente tem inclinação positiva. Quando a derivada é negativa, a função está decrescendo, e a reta tangente tem inclinação negativa. Quando a derivada é zero, temos um ponto crítico, onde a reta tangente é horizontal.</p>
+
+            <h3>1.3 Interpretação Física</h3>
+            <p>Na física, as derivadas têm interpretações muito concretas e importantes. Se $s(t)$ representa a posição de um objeto em função do tempo, então:</p>
+
+            <ul style="margin-left: 40px; margin-bottom: 20px;">
+                <li>A primeira derivada $s'(t) = v(t)$ representa a velocidade</li>
+                <li>A segunda derivada $s''(t) = a(t)$ representa a aceleração</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Exemplo Prático:</h4>
+                <p>Considere um objeto em queda livre, onde a posição é dada por $s(t) = -\frac{1}{2}gt^2 + v_0t + s_0$, onde $g$ é a aceleração da gravidade, $v_0$ é a velocidade inicial e $s_0$ é a posição inicial.</p>
+                
+                <p>A velocidade será: $v(t) = s'(t) = -gt + v_0$</p>
+                <p>A aceleração será: $a(t) = v'(t) = s''(t) = -g$</p>
+            </div>
+
+            <h3>1.4 Notações Matemáticas</h3>
+            <p>Existem várias notações para representar derivadas, cada uma com suas vantagens em diferentes contextos:</p>
+
+            <table>
+                <tr>
+                    <th>Notação</th>
+                    <th>Descrição</th>
+                    <th>Uso Comum</th>
+                </tr>
+                <tr>
+                    <td>$f'(x)$</td>
+                    <td>Notação de Lagrange</td>
+                    <td>Matemática pura, análise de funções</td>
+                </tr>
+                <tr>
+                    <td>$\frac{df}{dx}$</td>
+                    <td>Notação de Leibniz</td>
+                    <td>Física, engenharia, equações diferenciais</td>
+                </tr>
+                <tr>
+                    <td>$D_x f$</td>
+                    <td>Notação de operador</td>
+                    <td>Análise funcional, matemática avançada</td>
+                </tr>
+                <tr>
+                    <td>$\dot{f}$</td>
+                    <td>Notação de Newton</td>
+                    <td>Física, especialmente mecânica</td>
+                </tr>
+            </table>
+
+            <div class="note">
+                <strong>Nota Importante:</strong> A escolha da notação muitas vezes depende do contexto e da tradição da área de estudo. Na física, por exemplo, é comum usar a notação de Newton para derivadas em relação ao tempo, enquanto em matemática pura, a notação de Lagrange é frequentemente preferida.
+            </div>
+        </section>
+
+        <section id="definicao" class="section">
+            <h2>2. Definição Formal de Derivada</h2>
+
+            <h3>2.1 Limite da Razão Incremental</h3>
+            <p>A definição formal de derivada baseia-se no conceito de limite. Para uma função $f(x)$ definida em um intervalo contendo o ponto $x = a$, a derivada de $f$ no ponto $a$ é definida como o limite da razão incremental quando o incremento tende a zero.</p>
+
+            <div class="theorem-box">
+                <h4>Definição Formal de Derivada</h4>
+                <p>A derivada de uma função $f(x)$ no ponto $x = a$ é definida por:</p>
+                $$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$
+                <p>desde que este limite exista e seja finito.</p>
+            </div>
+
+            <p>Esta definição pode ser interpretada geometricamente como o limite das inclinações das retas secantes que passam pelos pontos $(a, f(a))$ e $(a+h, f(a+h))$ quando $h$ se aproxima de zero. À medida que $h$ diminui, a reta secante se aproxima da reta tangente, e sua inclinação se aproxima da inclinação da reta tangente.</p>
+
+            <h3>2.2 Definição Alternativa</h3>
+            <p>Uma forma alternativa e equivalente de definir a derivada é:</p>
+
+            <div class="formula-box">
+                $$f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a}$$
+            </div>
+
+            <p>Esta forma é particularmente útil quando trabalhamos com funções definidas implicitamente ou quando queremos enfatizar que estamos considerando o comportamento da função em uma vizinhança do ponto $a$.</p>
+
+            <h3>2.3 Condições de Existência</h3>
+            <p>Para que a derivada de uma função exista em um ponto, várias condições devem ser satisfeitas:</p>
+
+            <h4>2.3.1 Continuidade</h4>
+            <p>Se uma função é derivável em um ponto, então ela é necessariamente contínua nesse ponto. No entanto, o contrário não é verdadeiro: uma função pode ser contínua em um ponto sem ser derivável nesse ponto.</p>
+
+            <div class="example-box">
+                <h4>Exemplo de Função Contínua mas Não Derivável:</h4>
+                <p>A função $f(x) = |x|$ é contínua em $x = 0$, mas não é derivável nesse ponto porque:</p>
+                $$\lim_{h \to 0^+} \frac{|0+h| - |0|}{h} = \lim_{h \to 0^+} \frac{h}{h} = 1$$
+                $$\lim_{h \to 0^-} \frac{|0+h| - |0|}{h} = \lim_{h \to 0^-} \frac{-h}{h} = -1$$
+                <p>Como os limites laterais são diferentes, a derivada não existe em $x = 0$.</p>
+            </div>
+
+            <h4>2.3.2 Diferenciabilidade</h4>
+            <p>Uma função é dita diferenciável em um ponto se a derivada existe nesse ponto. Uma função é diferenciável em um intervalo se for diferenciável em todos os pontos desse intervalo.</p>
+
+            <h3>2.4 Cálculo Prático da Derivada pela Definição</h3>
+            <p>Embora na prática usemos regras de derivação, é importante saber como calcular derivadas usando a definição formal. Vejamos alguns exemplos:</p>
+
+            <div class="example-box">
+                <h4>Exemplo 1: Derivada de $f(x) = x^2$</h4>
+                <p>Usando a definição:</p>
+                $$f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h}$$
+                $$= \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x^2}{h}$$
+                $$= \lim_{h \to 0} \frac{2xh + h^2}{h}$$
+                $$= \lim_{h \to 0} (2x + h) = 2x$$
+                <p>Portanto, $f'(x) = 2x$.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo 2: Derivada de $f(x) = \sqrt{x}$</h4>
+                <p>Para $x > 0$:</p>
+                $$f'(x) = \lim_{h \to 0} \frac{\sqrt{x+h} - \sqrt{x}}{h}$$
+                <p>Multiplicando numerador e denominador por $\sqrt{x+h} + \sqrt{x}$:</p>
+                $$= \lim_{h \to 0} \frac{(\sqrt{x+h} - \sqrt{x})(\sqrt{x+h} + \sqrt{x})}{h(\sqrt{x+h} + \sqrt{x})}$$
+                $$= \lim_{h \to 0} \frac{(x+h) - x}{h(\sqrt{x+h} + \sqrt{x})}$$
+                $$= \lim_{h \to 0} \frac{h}{h(\sqrt{x+h} + \sqrt{x})}$$
+                $$= \lim_{h \to 0} \frac{1}{\sqrt{x+h} + \sqrt{x}} = \frac{1}{2\sqrt{x}}$$
+            </div>
+
+            <div class="note">
+                <strong>Dica Importante:</strong> Ao calcular derivadas pela definição, técnicas algébricas como fatoração, racionalização e simplificação são frequentemente necessárias para eliminar a indeterminação $\frac{0}{0}$ que aparece inicialmente.
+            </div>
+        </section>
+
+        <section id="regras" class="section">
+            <h2>3. Regras de Derivação</h2>
+
+            <p>As regras de derivação são ferramentas fundamentais que nos permitem calcular derivadas de forma eficiente sem recorrer à definição formal a cada vez. Estas regras são baseadas em propriedades dos limites e facilitam enormemente o cálculo de derivadas de funções complexas.</p>
+
+            <h3>3.1 Regra da Potência</h3>
+            <p>A regra da potência é uma das mais básicas e úteis regras de derivação. Ela se aplica a funções da forma $f(x) = x^n$, onde $n$ é qualquer número real.</p>
+
+            <div class="theorem-box">
+                <h4>Regra da Potência</h4>
+                <p>Se $f(x) = x^n$, onde $n$ é um número real, então:</p>
+                $$f'(x) = nx^{n-1}$$
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplos da Regra da Potência:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>$\frac{d}{dx}(x^3) = 3x^2$</li>
+                    <li>$\frac{d}{dx}(x^{-2}) = -2x^{-3} = -\frac{2}{x^3}$</li>
+                    <li>$\frac{d}{dx}(\sqrt{x}) = \frac{d}{dx}(x^{1/2}) = \frac{1}{2}x^{-1/2} = \frac{1}{2\sqrt{x}}$</li>
+                    <li>$\frac{d}{dx}(1) = \frac{d}{dx}(x^0) = 0 \cdot x^{-1} = 0$</li>
+                </ul>
+            </div>
+
+            <h3>3.2 Regra da Soma e Diferença</h3>
+            <p>A derivada de uma soma (ou diferença) de funções é igual à soma (ou diferença) das derivadas das funções individuais.</p>
+
+            <div class="theorem-box">
+                <h4>Regra da Soma e Diferença</h4>
+                <p>Se $f(x)$ e $g(x)$ são funções deriváveis, então:</p>
+                $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$
+            </div>
+
+            <p>Esta regra se estende para qualquer número finito de funções e também inclui constantes multiplicativas:</p>
+
+            <div class="formula-box">
+                $$\frac{d}{dx}[af(x) + bg(x)] = af'(x) + bg'(x)$$
+                <p>onde $a$ e $b$ são constantes.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <p>Calcular a derivada de $f(x) = 3x^4 - 2x^3 + 5x - 7$:</p>
+                $$f'(x) = 3 \cdot 4x^3 - 2 \cdot 3x^2 + 5 \cdot 1 - 0$$
+                $$f'(x) = 12x^3 - 6x^2 + 5$$
+            </div>
+
+            <h3>3.3 Regra do Produto</h3>
+            <p>Quando temos o produto de duas funções, a derivada não é simplesmente o produto das derivadas. A regra do produto nos dá a fórmula correta:</p>
+
+            <div class="theorem-box">
+                <h4>Regra do Produto</h4>
+                <p>Se $f(x)$ e $g(x)$ são funções deriváveis, então:</p>
+                $$\frac{d}{dx}[f(x) \cdot g(x)] = f'(x) \cdot g(x) + f(x) \cdot g'(x)$$
+            </div>
+
+            <p>Uma forma mnemônica de lembrar esta regra é: "a derivada do primeiro vezes o segundo, mais o primeiro vezes a derivada do segundo".</p>
+
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <p>Calcular a derivada de $f(x) = (2x + 1)(x^2 - 3)$:</p>
+                <p>Seja $u(x) = 2x + 1$ e $v(x) = x^2 - 3$</p>
+                <p>Então $u'(x) = 2$ e $v'(x) = 2x$</p>
+                $$f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$$
+                $$= 2(x^2 - 3) + (2x + 1)(2x)$$
+                $$= 2x^2 - 6 + 4x^2 + 2x$$
+                $$= 6x^2 + 2x - 6$$
+            </div>
+
+            <h3>3.4 Regra do Quociente</h3>
+            <p>Para a derivada de um quociente de funções, temos uma regra específica que é um pouco mais complexa:</p>
+
+            <div class="theorem-box">
+                <h4>Regra do Quociente</h4>
+                <p>Se $f(x)$ e $g(x)$ são funções deriváveis e $g(x) \neq 0$, então:</p>
+                $$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{[g(x)]^2}$$
+            </div>
+
+            <p>Uma forma de lembrar esta regra é: "derivada do numerador vezes denominador, menos numerador vezes derivada do denominador, tudo sobre denominador ao quadrado".</p>
+
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <p>Calcular a derivada de $f(x) = \frac{x^2 + 1}{x - 2}$:</p>
+                <p>Seja $u(x) = x^2 + 1$ e $v(x) = x - 2$</p>
+                <p>Então $u'(x) = 2x$ e $v'(x) = 1$</p>
+                $$f'(x) = \frac{u'(x) \cdot v(x) - u(x) \cdot v'(x)}{[v(x)]^2}$$
+                $$= \frac{2x(x - 2) - (x^2 + 1)(1)}{(x - 2)^2}$$
+                $$= \frac{2x^2 - 4x - x^2 - 1}{(x - 2)^2}$$
+                $$= \frac{x^2 - 4x - 1}{(x - 2)^2}$$
+            </div>
+
+            <h3>3.5 Regra da Cadeia</h3>
+            <p>A regra da cadeia é fundamental para derivar funções compostas. É uma das regras mais importantes e versáteis do cálculo diferencial.</p>
+
+            <div class="theorem-box">
+                <h4>Regra da Cadeia</h4>
+                <p>Se $y = f(g(x))$, onde tanto $f$ quanto $g$ são deriváveis, então:</p>
+                $$\frac{dy}{dx} = f'(g(x)) \cdot g'(x)$$
+                <p>Ou, usando a notação de Leibniz:</p>
+                $$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$$
+                <p>onde $u = g(x)$.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo 1:</h4>
+                <p>Calcular a derivada de $f(x) = (3x^2 + 2x - 1)^5$:</p>
+                <p>Seja $u = 3x^2 + 2x - 1$, então $f(x) = u^5$</p>
+                <p>$\frac{du}{dx} = 6x + 2$ e $\frac{df}{du} = 5u^4$</p>
+                $$f'(x) = \frac{df}{du} \cdot \frac{du}{dx} = 5u^4 \cdot (6x + 2)$$
+                $$= 5(3x^2 + 2x - 1)^4 \cdot (6x + 2)$$
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo 2:</h4>
+                <p>Calcular a derivada de $f(x) = \sin(x^2 + 1)$:</p>
+                <p>Seja $u = x^2 + 1$, então $f(x) = \sin(u)$</p>
+                <p>$\frac{du}{dx} = 2x$ e $\frac{df}{du} = \cos(u)$</p>
+                $$f'(x) = \cos(u) \cdot 2x = 2x\cos(x^2 + 1)$$
+            </div>
+
+            <div class="note">
+                <strong>Dica Prática:</strong> A regra da cadeia pode ser aplicada múltiplas vezes quando temos composições de várias funções. Por exemplo, para $f(g(h(x)))$, teríamos $f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x)$.
+            </div>
+
+            <h3>3.6 Resumo das Regras Básicas</h3>
+            <table>
+                <tr>
+                    <th>Função</th>
+                    <th>Derivada</th>
+                    <th>Regra Aplicada</th>
+                </tr>
+                <tr>
+                    <td>$c$ (constante)</td>
+                    <td>$0$</td>
+                    <td>Derivada de constante</td>
+                </tr>
+                <tr>
+                    <td>$x^n$</td>
+                    <td>$nx^{n-1}$</td>
+                    <td>Regra da potência</td>
+                </tr>
+                <tr>
+                    <td>$f(x) + g(x)$</td>
+                    <td>$f'(x) + g'(x)$</td>
+                    <td>Regra da soma</td>
+                </tr>
+                <tr>
+                    <td>$f(x) \cdot g(x)$</td>
+                    <td>$f'(x)g(x) + f(x)g'(x)$</td>
+                    <td>Regra do produto</td>
+                </tr>
+                <tr>
+                    <td>$\frac{f(x)}{g(x)}$</td>
+                    <td>$\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}$</td>
+                    <td>Regra do quociente</td>
+                </tr>
+                <tr>
+                    <td>$f(g(x))$</td>
+                    <td>$f'(g(x)) \cdot g'(x)$</td>
+                    <td>Regra da cadeia</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="funcoes" class="section">
+            <h2>4. Derivadas de Funções Elementares</h2>
+
+            <p>Nesta seção, estudaremos as derivadas das principais funções elementares que aparecem frequentemente em cálculo e suas aplicações. É fundamental memorizar essas derivadas, pois elas servem como blocos de construção para derivar funções mais complexas.</p>
+
+            <h3>4.1 Funções Polinomiais</h3>
+            <p>As funções polinomiais são as mais simples de derivar, usando principalmente a regra da potência e a linearidade da derivação.</p>
+
+            <div class="formula-box">
+                <h4>Derivadas de Funções Polinomiais:</h4>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$\frac{d}{dx}(c) = 0$ (onde $c$ é constante)</li>
+                    <li>$\frac{d}{dx}(x) = 1$</li>
+                    <li>$\frac{d}{dx}(x^n) = nx^{n-1}$</li>
+                    <li>$\frac{d}{dx}(ax^n + bx^m + c) = anx^{n-1} + bmx^{m-1}$</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo Completo:</h4>
+                <p>Derivar $f(x) = 2x^5 - 3x^4 + x^3 - 7x^2 + 5x - 8$:</p>
+                $$f'(x) = 2 \cdot 5x^4 - 3 \cdot 4x^3 + 1 \cdot 3x^2 - 7 \cdot 2x + 5 \cdot 1 - 0$$
+                $$f'(x) = 10x^4 - 12x^3 + 3x^2 - 14x + 5$$
+            </div>
+
+            <h3>4.2 Funções Exponenciais</h3>
+            <p>As funções exponenciais têm propriedades únicas em relação à derivação, especialmente a função exponencial natural.</p>
+
+            <div class="theorem-box">
+                <h4>Derivadas de Funções Exponenciais:</h4>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$\frac{d}{dx}(e^x) = e^x$</li>
+                    <li>$\frac{d}{dx}(a^x) = a^x \ln(a)$ (onde $a > 0, a \neq 1$)</li>
+                    <li>$\frac{d}{dx}(e^{f(x)}) = e^{f(x)} \cdot f'(x)$ (regra da cadeia)</li>
+                    <li>$\frac{d}{dx}(a^{f(x)}) = a^{f(x)} \ln(a) \cdot f'(x)$ (regra da cadeia)</li>
+                </ul>
+            </div>
+
+            <p>A função $e^x$ é especial porque é a única função exponencial cuja derivada é igual a ela mesma. Esta propriedade torna $e$ (número de Euler ≈ 2.71828) a base natural para logaritmos e exponenciais.</p>
+
+            <div class="example-box">
+                <h4>Exemplos:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>$\frac{d}{dx}(e^{2x}) = e^{2x} \cdot 2 = 2e^{2x}$</li>
+                    <li>$\frac{d}{dx}(3^x) = 3^x \ln(3)$</li>
+                    <li>$\frac{d}{dx}(e^{x^2}) = e^{x^2} \cdot 2x = 2xe^{x^2}$</li>
+                    <li>$\frac{d}{dx}(2^{3x+1}) = 2^{3x+1} \ln(2) \cdot 3 = 3\ln(2) \cdot 2^{3x+1}$</li>
+                </ul>
+            </div>
+
+            <h3>4.3 Funções Logarítmicas</h3>
+            <p>As funções logarítmicas são inversas das funções exponenciais, e suas derivadas têm formas características.</p>
+
+            <div class="theorem-box">
+                <h4>Derivadas de Funções Logarítmicas:</h4>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$\frac{d}{dx}(\ln x) = \frac{1}{x}$ (para $x > 0$)</li>
+                    <li>$\frac{d}{dx}(\log_a x) = \frac{1}{x \ln a}$ (para $x > 0, a > 0, a \neq 1$)</li>
+                    <li>$\frac{d}{dx}(\ln|f(x)|) = \frac{f'(x)}{f(x)}$ (regra da cadeia)</li>
+                    <li>$\frac{d}{dx}(\log_a|f(x)|) = \frac{f'(x)}{f(x) \ln a}$ (regra da cadeia)</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplos:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>$\frac{d}{dx}(\ln(2x)) = \frac{1}{2x} \cdot 2 = \frac{1}{x}$</li>
+                    <li>$\frac{d}{dx}(\log_{10} x) = \frac{1}{x \ln 10}$</li>
+                    <li>$\frac{d}{dx}(\ln(x^2 + 1)) = \frac{2x}{x^2 + 1}$</li>
+                    <li>$\frac{d}{dx}(\ln|\sin x|) = \frac{\cos x}{\sin x} = \cot x$</li>
+                </ul>
+            </div>
+
+            <h3>4.4 Funções Trigonométricas</h3>
+            <p>As funções trigonométricas e suas derivadas formam padrões cíclicos que são importantes de memorizar.</p>
+
+            <div class="theorem-box">
+                <h4>Derivadas das Funções Trigonométricas Básicas:</h4>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$\frac{d}{dx}(\sin x) = \cos x$</li>
+                    <li>$\frac{d}{dx}(\cos x) = -\sin x$</li>
+                    <li>$\frac{d}{dx}(\tan x) = \sec^2 x = \frac{1}{\cos^2 x}$</li>
+                    <li>$\frac{d}{dx}(\cot x) = -\csc^2 x = -\frac{1}{\sin^2 x}$</li>
+                    <li>$\frac{d}{dx}(\sec x) = \sec x \tan x$</li>
+                    <li>$\frac{d}{dx}(\csc x) = -\csc x \cot x$</li>
+                </ul>
+            </div>
+
+            <p>Observe o padrão cíclico nas derivadas de seno e cosseno: $\sin x \to \cos x \to -\sin x \to -\cos x \to \sin x$.</p>
+
+            <div class="example-box">
+                <h4>Exemplos com Regra da Cadeia:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>$\frac{d}{dx}(\sin(2x)) = \cos(2x) \cdot 2 = 2\cos(2x)$</li>
+                    <li>$\frac{d}{dx}(\cos(x^2)) = -\sin(x^2) \cdot 2x = -2x\sin(x^2)$</li>
+                    <li>$\frac{d}{dx}(\tan(3x + 1)) = \sec^2(3x + 1) \cdot 3 = 3\sec^2(3x + 1)$</li>
+                </ul>
+            </div>
+
+            <h3>4.5 Funções Trigonométricas Inversas</h3>
+            <p>As derivadas das funções trigonométricas inversas envolvem expressões com radicais e são muito úteis em integração.</p>
+
+            <div class="theorem-box">
+                <h4>Derivadas das Funções Trigonométricas Inversas:</h4>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$\frac{d}{dx}(\arcsin x) = \frac{1}{\sqrt{1-x^2}}$ (para $-1 < x < 1$)</li>
+                    <li>$\frac{d}{dx}(\arccos x) = -\frac{1}{\sqrt{1-x^2}}$ (para $-1 < x < 1$)</li>
+                    <li>$\frac{d}{dx}(\arctan x) = \frac{1}{1+x^2}$</li>
+                    <li>$\frac{d}{dx}(\text{arccot } x) = -\frac{1}{1+x^2}$</li>
+                    <li>$\frac{d}{dx}(\text{arcsec } x) = \frac{1}{|x|\sqrt{x^2-1}}$ (para $|x| > 1$)</li>
+                    <li>$\frac{d}{dx}(\text{arccsc } x) = -\frac{1}{|x|\sqrt{x^2-1}}$ (para $|x| > 1$)</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplos:</h4>
+                <ul style="margin-left: 20px;">
+                    <li>$\frac{d}{dx}(\arcsin(2x)) = \frac{1}{\sqrt{1-(2x)^2}} \cdot 2 = \frac{2}{\sqrt{1-4x^2}}$</li>
+                    <li>$\frac{d}{dx}(\arctan(x^2)) = \frac{1}{1+(x^2)^2} \cdot 2x = \frac{2x}{1+x^4}$</li>
+                </ul>
+            </div>
+
+            <h3>4.6 Funções Hiperbólicas</h3>
+            <p>As funções hiperbólicas são análogas às funções trigonométricas, mas baseadas na função exponencial.</p>
+
+            <div class="theorem-box">
+                <h4>Definições e Derivadas das Funções Hiperbólicas:</h4>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$\sinh x = \frac{e^x - e^{-x}}{2}$ e $\frac{d}{dx}(\sinh x) = \cosh x$</li>
+                    <li>$\cosh x = \frac{e^x + e^{-x}}{2}$ e $\frac{d}{dx}(\cosh x) = \sinh x$</li>
+                    <li>$\tanh x = \frac{\sinh x}{\cosh x}$ e $\frac{d}{dx}(\tanh x) = \text{sech}^2 x$</li>
+                    <li>$\text{sech } x = \frac{1}{\cosh x}$ e $\frac{d}{dx}(\text{sech } x) = -\text{sech } x \tanh x$</li>
+                </ul>
+            </div>
+
+            <h3>4.7 Tabela Resumo das Derivadas Fundamentais</h3>
+            <table>
+                <tr>
+                    <th>Função</th>
+                    <th>Derivada</th>
+                    <th>Domínio da Derivada</th>
+                </tr>
+                <tr>
+                    <td>$x^n$</td>
+                    <td>$nx^{n-1}$</td>
+                    <td>$\mathbb{R}$ (se $n \geq 1$)</td>
+                </tr>
+                <tr>
+                    <td>$e^x$</td>
+                    <td>$e^x$</td>
+                    <td>$\mathbb{R}$</td>
+                </tr>
+                <tr>
+                    <td>$\ln x$</td>
+                    <td>$\frac{1}{x}$</td>
+                    <td>$(0, +\infty)$</td>
+                </tr>
+                <tr>
+                    <td>$\sin x$</td>
+                    <td>$\cos x$</td>
+                    <td>$\mathbb{R}$</td>
+                </tr>
+                <tr>
+                    <td>$\cos x$</td>
+                    <td>$-\sin x$</td>
+                    <td>$\mathbb{R}$</td>
+                </tr>
+                <tr>
+                    <td>$\tan x$</td>
+                    <td>$\sec^2 x$</td>
+                    <td>$x \neq \frac{\pi}{2} + n\pi$</td>
+                </tr>
+                <tr>
+                    <td>$\arcsin x$</td>
+                    <td>$\frac{1}{\sqrt{1-x^2}}$</td>
+                    <td>$(-1, 1)$</td>
+                </tr>
+                <tr>
+                    <td>$\arctan x$</td>
+                    <td>$\frac{1}{1+x^2}$</td>
+                    <td>$\mathbb{R}$</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="aplicacoes" class="section">
+            <h2>5. Aplicações das Derivadas</h2>
+
+            <p>As derivadas têm inúmeras aplicações práticas em matemática, física, engenharia, economia e outras áreas. Nesta seção, exploraremos as principais aplicações que demonstram a importância e utilidade do cálculo diferencial.</p>
+
+            <h3>5.1 Análise do Comportamento de Funções</h3>
+            <p>Uma das aplicações mais fundamentais das derivadas é a análise do comportamento de funções, incluindo crescimento, decrescimento e concavidade.</p>
+
+            <h4>5.1.1 Crescimento e Decrescimento</h4>
+            <p>A primeira derivada de uma função nos informa sobre seu crescimento ou decrescimento:</p>
+
+            <div class="theorem-box">
+                <h4>Teste da Primeira Derivada</h4>
+                <p>Seja $f(x)$ uma função derivável em um intervalo $I$:</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>Se $f'(x) > 0$ para todo $x \in I$, então $f$ é crescente em $I$</li>
+                    <li>Se $f'(x) < 0$ para todo $x \in I$, então $f$ é decrescente em $I$</li>
+                    <li>Se $f'(x) = 0$ em um ponto $x = c$, então $c$ é um ponto crítico</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <p>Analisar o crescimento da função $f(x) = x^3 - 3x^2 + 2$:</p>
+                <p>$f'(x) = 3x^2 - 6x = 3x(x - 2)$</p>
+                <p>Pontos críticos: $f'(x) = 0 \Rightarrow x = 0$ ou $x = 2$</p>
+                <p>Análise de sinais:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Para $x < 0$: $f'(x) > 0$ (função crescente)</li>
+                    <li>Para $0 < x < 2$: $f'(x) < 0$ (função decrescente)</li>
+                    <li>Para $x > 2$: $f'(x) > 0$ (função crescente)</li>
+                </ul>
+            </div>
+
+            <h4>5.1.2 Concavidade e Pontos de Inflexão</h4>
+            <p>A segunda derivada nos informa sobre a concavidade da função:</p>
+
+            <div class="theorem-box">
+                <h4>Teste da Segunda Derivada</h4>
+                <p>Seja $f(x)$ uma função duas vezes derivável:</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>Se $f''(x) > 0$, então $f$ tem concavidade para cima (côncava)</li>
+                    <li>Se $f''(x) < 0$, então $f$ tem concavidade para baixo (convexa)</li>
+                    <li>Se $f''(x) = 0$ e muda de sinal, então temos um ponto de inflexão</li>
+                </ul>
+            </div>
+
+            <h3>5.2 Máximos e Mínimos</h3>
+            <p>A determinação de valores máximos e mínimos é uma das aplicações mais importantes das derivadas.</p>
+
+            <h4>5.2.1 Máximos e Mínimos Locais</h4>
+            <div class="theorem-box">
+                <h4>Teste da Primeira Derivada para Extremos</h4>
+                <p>Seja $c$ um ponto crítico de $f$ (onde $f'(c) = 0$):</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>Se $f'(x)$ muda de positivo para negativo em $c$, então $f(c)$ é um máximo local</li>
+                    <li>Se $f'(x)$ muda de negativo para positivo em $c$, então $f(c)$ é um mínimo local</li>
+                    <li>Se $f'(x)$ não muda de sinal em $c$, então $f(c)$ não é extremo local</li>
+                </ul>
+            </div>
+
+            <div class="theorem-box">
+                <h4>Teste da Segunda Derivada para Extremos</h4>
+                <p>Seja $c$ um ponto crítico de $f$ onde $f'(c) = 0$:</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>Se $f''(c) > 0$, então $f(c)$ é um mínimo local</li>
+                    <li>Se $f''(c) < 0$, então $f(c)$ é um máximo local</li>
+                    <li>Se $f''(c) = 0$, o teste é inconclusivo</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo Completo:</h4>
+                <p>Encontrar os extremos de $f(x) = x^4 - 4x^3 + 6x^2 - 4x + 1$:</p>
+                
+                <p><strong>Passo 1:</strong> Calcular a primeira derivada:</p>
+                <p>$f'(x) = 4x^3 - 12x^2 + 12x - 4 = 4(x^3 - 3x^2 + 3x - 1) = 4(x-1)^3$</p>
+                
+                <p><strong>Passo 2:</strong> Encontrar pontos críticos:</p>
+                <p>$f'(x) = 0 \Rightarrow (x-1)^3 = 0 \Rightarrow x = 1$</p>
+                
+                <p><strong>Passo 3:</strong> Calcular a segunda derivada:</p>
+                <p>$f''(x) = 12x^2 - 24x + 12 = 12(x^2 - 2x + 1) = 12(x-1)^2$</p>
+                
+                <p><strong>Passo 4:</strong> Aplicar o teste da segunda derivada:</p>
+                <p>$f''(1) = 12(1-1)^2 = 0$ (teste inconclusivo)</p>
+                
+                <p><strong>Passo 5:</strong> Usar o teste da primeira derivada:</p>
+                <p>Como $f'(x) = 4(x-1)^3$, temos $f'(x) \geq 0$ para todo $x$, com igualdade apenas em $x = 1$. Portanto, $x = 1$ não é um extremo local, mas um ponto de inflexão horizontal.</p>
+            </div>
+
+            <h3>5.3 Problemas de Otimização</h3>
+            <p>Os problemas de otimização são aplicações práticas onde buscamos maximizar ou minimizar uma quantidade sujeita a certas restrições.</p>
+
+            <div class="example-box">
+                <h4>Problema Clássico: Caixa de Volume Máximo</h4>
+                <p><strong>Problema:</strong> De uma folha retangular de papelão de 20 cm por 30 cm, queremos construir uma caixa sem tampa cortando quadrados iguais dos quatro cantos e dobrando as laterais. Qual deve ser o lado do quadrado cortado para que o volume seja máximo?</p>
+                
+                <p><strong>Solução:</strong></p>
+                <p>Seja $x$ o lado do quadrado cortado. Então:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Comprimento da base: $30 - 2x$</li>
+                    <li>Largura da base: $20 - 2x$</li>
+                    <li>Altura: $x$</li>
+                </ul>
+                
+                <p>Volume: $V(x) = x(30-2x)(20-2x) = x(600 - 100x + 4x^2) = 4x^3 - 100x^2 + 600x$</p>
+                
+                <p>Restrições: $0 < x < 10$ (para que as dimensões sejam positivas)</p>
+                
+                <p>$V'(x) = 12x^2 - 200x + 600$</p>
+                
+                <p>Igualando a zero: $12x^2 - 200x + 600 = 0$</p>
+                <p>$3x^2 - 50x + 150 = 0$</p>
+                
+                <p>Usando a fórmula quadrática:</p>
+                <p>$x = \frac{50 \pm \sqrt{2500 - 1800}}{6} = \frac{50 \pm \sqrt{700}}{6} = \frac{50 \pm 10\sqrt{7}}{6}$</p>
+                
+                <p>$x_1 = \frac{50 - 10\sqrt{7}}{6} \approx 3.89$ cm</p>
+                <p>$x_2 = \frac{50 + 10\sqrt{7}}{6} \approx 12.78$ cm (fora do domínio)</p>
+                
+                <p>Verificando: $V''(x) = 24x - 200$</p>
+                <p>$V''(3.89) = 24(3.89) - 200 = -106.64 < 0$ (máximo)</p>
+                
+                <p><strong>Resposta:</strong> O lado do quadrado deve ser aproximadamente 3.89 cm.</p>
+            </div>
+
+            <h3>5.4 Taxa de Variação Relacionada</h3>
+            <p>Problemas de taxa de variação relacionada envolvem situações onde várias quantidades variam com o tempo e estão relacionadas entre si.</p>
+
+            <div class="example-box">
+                <h4>Exemplo: Balão Esférico</h4>
+                <p><strong>Problema:</strong> Um balão esférico está sendo inflado de modo que seu volume aumenta a uma taxa de 100 cm³/s. Com que velocidade o raio está aumentando quando o raio é 5 cm?</p>
+                
+                <p><strong>Solução:</strong></p>
+                <p>Dados: $\frac{dV}{dt} = 100$ cm³/s, $r = 5$ cm</p>
+                <p>Queremos: $\frac{dr}{dt}$ quando $r = 5$ cm</p>
+                
+                <p>Volume de uma esfera: $V = \frac{4}{3}\pi r^3$</p>
+                
+                <p>Derivando em relação ao tempo:</p>
+                <p>$\frac{dV}{dt} = \frac{d}{dt}\left(\frac{4}{3}\pi r^3\right) = \frac{4}{3}\pi \cdot 3r^2 \cdot \frac{dr}{dt} = 4\pi r^2 \frac{dr}{dt}$</p>
+                
+                <p>Substituindo os valores conhecidos:</p>
+                <p>$100 = 4\pi (5)^2 \frac{dr}{dt} = 100\pi \frac{dr}{dt}$</p>
+                
+                <p>Portanto: $\frac{dr}{dt} = \frac{100}{100\pi} = \frac{1}{\pi}$ cm/s</p>
+                
+                <p><strong>Resposta:</strong> O raio está aumentando a uma taxa de $\frac{1}{\pi} \approx 0.318$ cm/s.</p>
+            </div>
+
+            <h3>5.5 Aplicações em Física</h3>
+            <p>Na física, as derivadas são fundamentais para descrever movimento, forças e energia.</p>
+
+            <h4>5.5.1 Cinemática</h4>
+            <p>Se $s(t)$ representa a posição de um objeto em função do tempo:</p>
+            <ul style="margin-left: 40px;">
+                <li>Velocidade: $v(t) = s'(t) = \frac{ds}{dt}$</li>
+                <li>Aceleração: $a(t) = v'(t) = s''(t) = \frac{d^2s}{dt^2}$</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Exemplo: Movimento Uniformemente Acelerado</h4>
+                <p>Um objeto tem posição dada por $s(t) = 5t^2 + 2t + 1$ (em metros, com $t$ em segundos).</p>
+                
+                <p>Velocidade: $v(t) = s'(t) = 10t + 2$ m/s</p>
+                <p>Aceleração: $a(t) = v'(t) = 10$ m/s²</p>
+                
+                <p>Em $t = 3$ segundos:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Posição: $s(3) = 5(9) + 2(3) + 1 = 52$ m</li>
+                    <li>Velocidade: $v(3) = 10(3) + 2 = 32$ m/s</li>
+                    <li>Aceleração: $a(3) = 10$ m/s²</li>
+                </ul>
+            </div>
+
+            <h3>5.6 Aplicações em Economia</h3>
+            <p>Em economia, as derivadas são usadas para analisar custos, receitas e lucros.</p>
+
+            <h4>5.6.1 Análise Marginal</h4>
+            <p>Se $C(x)$ é a função custo total para produzir $x$ unidades:</p>
+            <ul style="margin-left: 40px;">
+                <li>Custo marginal: $C'(x)$ (custo de produzir uma unidade adicional)</li>
+                <li>Receita marginal: $R'(x)$ (receita de vender uma unidade adicional)</li>
+                <li>Lucro marginal: $P'(x) = R'(x) - C'(x)$</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Exemplo Econômico:</h4>
+                <p>Uma empresa tem função custo $C(x) = 1000 + 50x + 0.1x^2$ e função receita $R(x) = 100x - 0.05x^2$.</p>
+                
+                <p>Custo marginal: $C'(x) = 50 + 0.2x$</p>
+                <p>Receita marginal: $R'(x) = 100 - 0.1x$</p>
+                <p>Lucro: $P(x) = R(x) - C(x) = -1000 + 50x - 0.15x^2$</p>
+                <p>Lucro marginal: $P'(x) = 50 - 0.3x$</p>
+                
+                <p>Para maximizar o lucro: $P'(x) = 0$</p>
+                <p>$50 - 0.3x = 0 \Rightarrow x = \frac{50}{0.3} \approx 167$ unidades</p>
+            </div>
+
+            <div class="note">
+                <strong>Importância das Aplicações:</strong> As aplicações das derivadas demonstram como conceitos matemáticos abstratos se traduzem em soluções para problemas reais em diversas áreas do conhecimento. Dominar essas aplicações é essencial para usar o cálculo como ferramenta de análise e otimização.
+            </div>
+        </section>
+
+        <section id="ordem-superior" class="section">
+            <h2>6. Derivadas de Ordem Superior</h2>
+
+            <p>Até agora, focamos principalmente na primeira derivada de funções. No entanto, podemos derivar uma função quantas vezes quisermos (desde que as derivadas existam), obtendo derivadas de segunda, terceira, quarta ordem e assim por diante. Essas derivadas de ordem superior têm interpretações e aplicações importantes.</p>
+
+            <h3>6.1 Definição e Notação</h3>
+            <p>Se $f(x)$ é uma função derivável, sua primeira derivada é $f'(x)$. Se $f'(x)$ também for derivável, podemos calcular sua derivada, obtendo a segunda derivada de $f$.</p>
+
+            <div class="theorem-box">
+                <h4>Derivadas de Ordem Superior</h4>
+                <p>Para uma função $f(x)$, definimos:</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>Segunda derivada: $f''(x) = \frac{d}{dx}[f'(x)] = \frac{d^2f}{dx^2}$</li>
+                    <li>Terceira derivada: $f'''(x) = \frac{d}{dx}[f''(x)] = \frac{d^3f}{dx^3}$</li>
+                    <li>n-ésima derivada: $f^{(n)}(x) = \frac{d^nf}{dx^n}$</li>
+                </ul>
+            </div>
+
+            <h4>6.1.1 Notações Alternativas</h4>
+            <table>
+                <tr>
+                    <th>Ordem</th>
+                    <th>Notação de Lagrange</th>
+                    <th>Notação de Leibniz</th>
+                    <th>Notação de Newton</th>
+                </tr>
+                <tr>
+                    <td>Primeira</td>
+                    <td>$f'(x)$</td>
+                    <td>$\frac{df}{dx}$</td>
+                    <td>$\dot{f}$</td>
+                </tr>
+                <tr>
+                    <td>Segunda</td>
+                    <td>$f''(x)$</td>
+                    <td>$\frac{d^2f}{dx^2}$</td>
+                    <td>$\ddot{f}$</td>
+                </tr>
+                <tr>
+                    <td>Terceira</td>
+                    <td>$f'''(x)$</td>
+                    <td>$\frac{d^3f}{dx^3}$</td>
+                    <td>$\dddot{f}$</td>
+                </tr>
+                <tr>
+                    <td>n-ésima</td>
+                    <td>$f^{(n)}(x)$</td>
+                    <td>$\frac{d^nf}{dx^n}$</td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+            <h3>6.2 Cálculo de Derivadas de Ordem Superior</h3>
+            <p>O processo de calcular derivadas de ordem superior é direto: aplicamos sucessivamente as regras de derivação.</p>
+
+            <div class="example-box">
+                <h4>Exemplo 1: Função Polinomial</h4>
+                <p>Seja $f(x) = x^5 - 3x^4 + 2x^3 - x^2 + 5x - 7$</p>
+                
+                <p>$f'(x) = 5x^4 - 12x^3 + 6x^2 - 2x + 5$</p>
+                <p>$f''(x) = 20x^3 - 36x^2 + 12x - 2$</p>
+                <p>$f'''(x) = 60x^2 - 72x + 12$</p>
+                <p>$f^{(4)}(x) = 120x - 72$</p>
+                <p>$f^{(5)}(x) = 120$</p>
+                <p>$f^{(6)}(x) = 0$ (e todas as derivadas superiores são zero)</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo 2: Função Exponencial</h4>
+                <p>Seja $f(x) = e^{2x}$</p>
+                
+                <p>$f'(x) = 2e^{2x}$</p>
+                <p>$f''(x) = 4e^{2x}$</p>
+                <p>$f'''(x) = 8e^{2x}$</p>
+                <p>$f^{(n)}(x) = 2^n e^{2x}$</p>
+                
+                <p>Observe que para $f(x) = e^x$, temos $f^{(n)}(x) = e^x$ para todo $n \geq 0$.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo 3: Funções Trigonométricas</h4>
+                <p>Seja $f(x) = \sin x$</p>
+                
+                <p>$f'(x) = \cos x$</p>
+                <p>$f''(x) = -\sin x$</p>
+                <p>$f'''(x) = -\cos x$</p>
+                <p>$f^{(4)}(x) = \sin x$</p>
+                
+                <p>As derivadas de $\sin x$ seguem um padrão cíclico com período 4:</p>
+                <p>$\sin x \to \cos x \to -\sin x \to -\cos x \to \sin x \to \ldots$</p>
+            </div>
+
+            <h3>6.3 Interpretação Física da Segunda Derivada</h3>
+            <p>Na física, a segunda derivada tem uma interpretação muito importante, especialmente na mecânica.</p>
+
+            <h4>6.3.1 Aceleração</h4>
+            <p>Se $s(t)$ representa a posição de um objeto em função do tempo:</p>
+            <ul style="margin-left: 40px;">
+                <li>$s'(t) = v(t)$ é a velocidade</li>
+                <li>$s''(t) = a(t)$ é a aceleração</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Exemplo: Movimento sob Gravidade</h4>
+                <p>Um objeto é lançado verticalmente para cima com velocidade inicial $v_0 = 20$ m/s de uma altura inicial $h_0 = 5$ m.</p>
+                
+                <p>Posição: $s(t) = -\frac{1}{2}gt^2 + v_0 t + h_0 = -4.9t^2 + 20t + 5$</p>
+                <p>Velocidade: $v(t) = s'(t) = -9.8t + 20$</p>
+                <p>Aceleração: $a(t) = s''(t) = -9.8$ m/s²</p>
+                
+                <p>A aceleração é constante e igual à aceleração da gravidade (com sinal negativo, indicando direção para baixo).</p>
+            </div>
+
+            <h3>6.4 Concavidade e Pontos de Inflexão</h3>
+            <p>A segunda derivada nos fornece informações sobre a concavidade de uma função e a localização de pontos de inflexão.</p>
+
+            <div class="theorem-box">
+                <h4>Teste da Segunda Derivada para Concavidade</h4>
+                <p>Seja $f(x)$ uma função duas vezes derivável em um intervalo $I$:</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>Se $f''(x) > 0$ para todo $x \in I$, então $f$ é côncava para cima em $I$</li>
+                    <li>Se $f''(x) < 0$ para todo $x \in I$, então $f$ é côncava para baixo em $I$</li>
+                </ul>
+            </div>
+
+            <div class="theorem-box">
+                <h4>Pontos de Inflexão</h4>
+                <p>Um ponto $(c, f(c))$ é um ponto de inflexão se:</p>
+                <ul style="text-align: left; margin-left: 40px;">
+                    <li>$f''(c) = 0$ ou $f''(c)$ não existe</li>
+                    <li>$f''(x)$ muda de sinal em $x = c$</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo: Análise Completa</h4>
+                <p>Analisar a função $f(x) = x^4 - 6x^2 + 5$</p>
+                
+                <p><strong>Primeira derivada:</strong> $f'(x) = 4x^3 - 12x = 4x(x^2 - 3) = 4x(x-\sqrt{3})(x+\sqrt{3})$</p>
+                
+                <p><strong>Pontos críticos:</strong> $x = 0, x = \pm\sqrt{3}$</p>
+                
+                <p><strong>Segunda derivada:</strong> $f''(x) = 12x^2 - 12 = 12(x^2 - 1) = 12(x-1)(x+1)$</p>
+                
+                <p><strong>Possíveis pontos de inflexão:</strong> $x = \pm 1$</p>
+                
+                <p><strong>Análise de concavidade:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>$x < -1$: $f''(x) > 0$ (côncava para cima)</li>
+                    <li>$-1 < x < 1$: $f''(x) < 0$ (côncava para baixo)</li>
+                    <li>$x > 1$: $f''(x) > 0$ (côncava para cima)</li>
+                </ul>
+                
+                <p><strong>Classificação dos pontos críticos:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>$x = -\sqrt{3}$: $f''(-\sqrt{3}) = 12(3-1) = 24 > 0$ (mínimo local)</li>
+                    <li>$x = 0$: $f''(0) = -12 < 0$ (máximo local)</li>
+                    <li>$x = \sqrt{3}$: $f''(\sqrt{3}) = 12(3-1) = 24 > 0$ (mínimo local)</li>
+                </ul>
+            </div>
+
+            <h3>6.5 Fórmula de Leibniz para Derivadas de Produtos</h3>
+            <p>Quando precisamos calcular derivadas de ordem superior de produtos de funções, a fórmula de Leibniz é muito útil.</p>
+
+            <div class="theorem-box">
+                <h4>Fórmula de Leibniz</h4>
+                <p>Para funções $f(x)$ e $g(x)$ que possuem derivadas de ordem $n$:</p>
+                $$[f(x) \cdot g(x)]^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}(x) g^{(n-k)}(x)$$
+                <p>onde $\binom{n}{k}$ é o coeficiente binomial.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo da Fórmula de Leibniz</h4>
+                <p>Calcular a terceira derivada de $f(x) = x^2 e^x$</p>
+                
+                <p>Seja $u(x) = x^2$ e $v(x) = e^x$</p>
+                
+                <p>Derivadas de $u(x)$: $u'(x) = 2x$, $u''(x) = 2$, $u'''(x) = 0$</p>
+                <p>Derivadas de $v(x)$: $v'(x) = e^x$, $v''(x) = e^x$, $v'''(x) = e^x$</p>
+                
+                <p>Aplicando a fórmula de Leibniz para $n = 3$:</p>
+                $$[x^2 e^x]''' = \binom{3}{0}u'''v + \binom{3}{1}u''v' + \binom{3}{2}u'v'' + \binom{3}{3}uv'''$$
+                $$= 1 \cdot 0 \cdot e^x + 3 \cdot 2 \cdot e^x + 3 \cdot 2x \cdot e^x + 1 \cdot x^2 \cdot e^x$$
+                $$= 6e^x + 6xe^x + x^2e^x = e^x(x^2 + 6x + 6)$$
+            </div>
+
+            <h3>6.6 Aplicações das Derivadas de Ordem Superior</h3>
+
+            <h4>6.6.1 Série de Taylor</h4>
+            <p>As derivadas de ordem superior são fundamentais na construção de séries de Taylor, que aproximam funções por polinômios.</p>
+
+            <div class="formula-box">
+                <h4>Série de Taylor</h4>
+                <p>Para uma função $f(x)$ infinitamente derivável em torno de $x = a$:</p>
+                $$f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n$$
+            </div>
+
+            <h4>6.6.2 Análise de Estabilidade</h4>
+            <p>Em sistemas dinâmicos e equações diferenciais, derivadas de ordem superior são usadas para analisar a estabilidade de pontos de equilíbrio.</p>
+
+            <div class="note">
+                <strong>Importância Prática:</strong> As derivadas de ordem superior não são apenas exercícios matemáticos abstratos. Elas aparecem naturalmente em física (aceleração, jerk), engenharia (análise de vibrações), economia (elasticidade de segunda ordem) e muitas outras áreas aplicadas.
+            </div>
+        </section>
+
+        <section id="exercicios" class="section">
+            <h2>7. Exercícios Práticos</h2>
+
+            <p>Esta seção contém uma coleção abrangente de exercícios para praticar e consolidar os conceitos de derivadas. Os exercícios estão organizados por nível de dificuldade e por tópico, incluindo soluções detalhadas para facilitar o aprendizado.</p>
+
+            <h3>7.1 Exercícios Básicos - Regras Fundamentais</h3>
+
+            <div class="exercise-box">
+                <h4>Exercício 1: Regra da Potência</h4>
+                <p><strong>Calcule as derivadas das seguintes funções:</strong></p>
+                <p>a) $f(x) = x^7$</p>
+                <p>b) $g(x) = 3x^4 - 2x^3 + 5x - 1$</p>
+                <p>c) $h(x) = \frac{1}{x^3}$</p>
+                <p>d) $k(x) = \sqrt[3]{x^2}$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = 7x^6$</p>
+                <p>b) $g'(x) = 12x^3 - 6x^2 + 5$</p>
+                <p>c) $h(x) = x^{-3}$, então $h'(x) = -3x^{-4} = -\frac{3}{x^4}$</p>
+                <p>d) $k(x) = x^{2/3}$, então $k'(x) = \frac{2}{3}x^{-1/3} = \frac{2}{3\sqrt[3]{x}}$</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 2: Regra do Produto</h4>
+                <p><strong>Calcule as derivadas:</strong></p>
+                <p>a) $f(x) = (2x + 1)(3x - 2)$</p>
+                <p>b) $g(x) = x^2(x^3 - 4x + 1)$</p>
+                <p>c) $h(x) = (x^2 + 1)(x^2 - 1)$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = 2(3x - 2) + (2x + 1) \cdot 3 = 6x - 4 + 6x + 3 = 12x - 1$</p>
+                <p>b) $g'(x) = 2x(x^3 - 4x + 1) + x^2(3x^2 - 4) = 2x^4 - 8x^2 + 2x + 3x^4 - 4x^2 = 5x^4 - 12x^2 + 2x$</p>
+                <p>c) $h'(x) = 2x(x^2 - 1) + (x^2 + 1) \cdot 2x = 2x^3 - 2x + 2x^3 + 2x = 4x^3$</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 3: Regra do Quociente</h4>
+                <p><strong>Calcule as derivadas:</strong></p>
+                <p>a) $f(x) = \frac{x + 1}{x - 1}$</p>
+                <p>b) $g(x) = \frac{x^2}{x + 2}$</p>
+                <p>c) $h(x) = \frac{2x - 3}{x^2 + 1}$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = \frac{1 \cdot (x-1) - (x+1) \cdot 1}{(x-1)^2} = \frac{x-1-x-1}{(x-1)^2} = \frac{-2}{(x-1)^2}$</p>
+                <p>b) $g'(x) = \frac{2x(x+2) - x^2 \cdot 1}{(x+2)^2} = \frac{2x^2 + 4x - x^2}{(x+2)^2} = \frac{x^2 + 4x}{(x+2)^2}$</p>
+                <p>c) $h'(x) = \frac{2(x^2+1) - (2x-3) \cdot 2x}{(x^2+1)^2} = \frac{2x^2+2-4x^2+6x}{(x^2+1)^2} = \frac{-2x^2+6x+2}{(x^2+1)^2}$</p>
+            </div>
+
+            <h3>7.2 Exercícios Intermediários - Regra da Cadeia</h3>
+
+            <div class="exercise-box">
+                <h4>Exercício 4: Regra da Cadeia Básica</h4>
+                <p><strong>Calcule as derivadas:</strong></p>
+                <p>a) $f(x) = (3x + 2)^5$</p>
+                <p>b) $g(x) = \sqrt{x^2 + 4}$</p>
+                <p>c) $h(x) = (x^3 - 2x + 1)^{-2}$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = 5(3x + 2)^4 \cdot 3 = 15(3x + 2)^4$</p>
+                <p>b) $g(x) = (x^2 + 4)^{1/2}$, então $g'(x) = \frac{1}{2}(x^2 + 4)^{-1/2} \cdot 2x = \frac{x}{\sqrt{x^2 + 4}}$</p>
+                <p>c) $h'(x) = -2(x^3 - 2x + 1)^{-3} \cdot (3x^2 - 2) = \frac{-2(3x^2 - 2)}{(x^3 - 2x + 1)^3}$</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 5: Funções Trigonométricas</h4>
+                <p><strong>Calcule as derivadas:</strong></p>
+                <p>a) $f(x) = \sin(2x + 3)$</p>
+                <p>b) $g(x) = \cos(x^2)$</p>
+                <p>c) $h(x) = \tan(3x - 1)$</p>
+                <p>d) $k(x) = \sin^2(x)$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = \cos(2x + 3) \cdot 2 = 2\cos(2x + 3)$</p>
+                <p>b) $g'(x) = -\sin(x^2) \cdot 2x = -2x\sin(x^2)$</p>
+                <p>c) $h'(x) = \sec^2(3x - 1) \cdot 3 = 3\sec^2(3x - 1)$</p>
+                <p>d) $k(x) = [\sin(x)]^2$, então $k'(x) = 2\sin(x) \cdot \cos(x) = \sin(2x)$</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 6: Funções Exponenciais e Logarítmicas</h4>
+                <p><strong>Calcule as derivadas:</strong></p>
+                <p>a) $f(x) = e^{2x-1}$</p>
+                <p>b) $g(x) = \ln(x^2 + 3x)$</p>
+                <p>c) $h(x) = 3^{x^2}$</p>
+                <p>d) $k(x) = x^2 e^x$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = e^{2x-1} \cdot 2 = 2e^{2x-1}$</p>
+                <p>b) $g'(x) = \frac{1}{x^2 + 3x} \cdot (2x + 3) = \frac{2x + 3}{x^2 + 3x}$</p>
+                <p>c) $h'(x) = 3^{x^2} \ln(3) \cdot 2x = 2x \ln(3) \cdot 3^{x^2}$</p>
+                <p>d) $k'(x) = 2x \cdot e^x + x^2 \cdot e^x = e^x(2x + x^2) = xe^x(2 + x)$</p>
+            </div>
+
+            <h3>7.3 Exercícios Avançados - Combinações Complexas</h3>
+
+            <div class="exercise-box">
+                <h4>Exercício 7: Derivação Implícita</h4>
+                <p><strong>Encontre $\frac{dy}{dx}$ para as seguintes equações:</strong></p>
+                <p>a) $x^2 + y^2 = 25$</p>
+                <p>b) $xy + y^2 = 6$</p>
+                <p>c) $\sin(xy) = x + y$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) Derivando ambos os lados: $2x + 2y\frac{dy}{dx} = 0$</p>
+                <p>Portanto: $\frac{dy}{dx} = -\frac{x}{y}$</p>
+                
+                <p>b) Derivando: $y + x\frac{dy}{dx} + 2y\frac{dy}{dx} = 0$</p>
+                <p>$(x + 2y)\frac{dy}{dx} = -y$</p>
+                <p>$\frac{dy}{dx} = -\frac{y}{x + 2y}$</p>
+                
+                <p>c) Derivando: $\cos(xy) \cdot (y + x\frac{dy}{dx}) = 1 + \frac{dy}{dx}$</p>
+                <p>$y\cos(xy) + x\cos(xy)\frac{dy}{dx} = 1 + \frac{dy}{dx}$</p>
+                <p>$(x\cos(xy) - 1)\frac{dy}{dx} = 1 - y\cos(xy)$</p>
+                <p>$\frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy) - 1}$</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 8: Derivadas de Ordem Superior</h4>
+                <p><strong>Calcule as derivadas indicadas:</strong></p>
+                <p>a) $f(x) = x^4 - 3x^3 + 2x^2 - x + 5$, encontre $f'''(x)$</p>
+                <p>b) $g(x) = e^{2x}$, encontre $g^{(4)}(x)$</p>
+                <p>c) $h(x) = \sin(x)$, encontre $h^{(6)}(x)$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $f'(x) = 4x^3 - 9x^2 + 4x - 1$</p>
+                <p>$f''(x) = 12x^2 - 18x + 4$</p>
+                <p>$f'''(x) = 24x - 18$</p>
+                
+                <p>b) $g'(x) = 2e^{2x}$, $g''(x) = 4e^{2x}$, $g'''(x) = 8e^{2x}$, $g^{(4)}(x) = 16e^{2x}$</p>
+                
+                <p>c) As derivadas de $\sin(x)$ seguem o padrão cíclico com período 4:</p>
+                <p>$h^{(4)}(x) = \sin(x)$, $h^{(5)}(x) = \cos(x)$, $h^{(6)}(x) = -\sin(x)$</p>
+            </div>
+
+            <h3>7.4 Problemas de Aplicação</h3>
+
+            <div class="exercise-box">
+                <h4>Exercício 9: Otimização</h4>
+                <p><strong>Problema:</strong> Um fazendeiro tem 200 metros de cerca para delimitar um campo retangular. Quais devem ser as dimensões do campo para que a área seja máxima?</p>
+                
+                <p><strong>Solução:</strong></p>
+                <p>Seja $x$ o comprimento e $y$ a largura do campo.</p>
+                <p>Restrição: $2x + 2y = 200$, ou seja, $y = 100 - x$</p>
+                <p>Área: $A(x) = xy = x(100 - x) = 100x - x^2$</p>
+                <p>Para maximizar: $A'(x) = 100 - 2x = 0$</p>
+                <p>$x = 50$ metros</p>
+                <p>$y = 100 - 50 = 50$ metros</p>
+                <p>Verificação: $A''(x) = -2 < 0$ (máximo)</p>
+                <p><strong>Resposta:</strong> O campo deve ser quadrado com lados de 50 metros.</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 10: Taxa de Variação Relacionada</h4>
+                <p><strong>Problema:</strong> Uma escada de 5 metros está apoiada contra uma parede vertical. Se a base da escada se afasta da parede a uma velocidade de 2 m/s, com que velocidade o topo da escada desce quando a base está a 3 metros da parede?</p>
+                
+                <p><strong>Solução:</strong></p>
+                <p>Seja $x$ a distância da base à parede e $y$ a altura do topo da escada.</p>
+                <p>Pelo teorema de Pitágoras: $x^2 + y^2 = 25$</p>
+                <p>Dados: $\frac{dx}{dt} = 2$ m/s, $x = 3$ m</p>
+                <p>Quando $x = 3$: $9 + y^2 = 25$, então $y = 4$ m</p>
+                <p>Derivando a equação: $2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 0$</p>
+                <p>$\frac{dy}{dt} = -\frac{x}{y} \cdot \frac{dx}{dt} = -\frac{3}{4} \cdot 2 = -1.5$ m/s</p>
+                <p><strong>Resposta:</strong> O topo da escada desce a 1.5 m/s.</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Exercício 11: Análise de Funções</h4>
+                <p><strong>Problema:</strong> Para a função $f(x) = x^3 - 6x^2 + 9x + 1$, determine:</p>
+                <p>a) Os intervalos de crescimento e decrescimento</p>
+                <p>b) Os máximos e mínimos locais</p>
+                <p>c) Os intervalos de concavidade</p>
+                <p>d) Os pontos de inflexão</p>
+                
+                <p><strong>Solução:</strong></p>
+                <p>$f'(x) = 3x^2 - 12x + 9 = 3(x^2 - 4x + 3) = 3(x-1)(x-3)$</p>
+                <p>$f''(x) = 6x - 12 = 6(x - 2)$</p>
+                
+                <p><strong>a) Crescimento e decrescimento:</strong></p>
+                <p>Pontos críticos: $x = 1$ e $x = 3$</p>
+                <p>$f'(x) > 0$ para $x < 1$ ou $x > 3$ (crescente)</p>
+                <p>$f'(x) < 0$ para $1 < x < 3$ (decrescente)</p>
+                
+                <p><strong>b) Extremos locais:</strong></p>
+                <p>$x = 1$: máximo local, $f(1) = 1 - 6 + 9 + 1 = 5$</p>
+                <p>$x = 3$: mínimo local, $f(3) = 27 - 54 + 27 + 1 = 1$</p>
+                
+                <p><strong>c) Concavidade:</strong></p>
+                <p>$f''(x) > 0$ para $x > 2$ (côncava para cima)</p>
+                <p>$f''(x) < 0$ para $x < 2$ (côncava para baixo)</p>
+                
+                <p><strong>d) Ponto de inflexão:</strong></p>
+                <p>$x = 2$, $f(2) = 8 - 24 + 18 + 1 = 3$</p>
+                <p>Ponto de inflexão: $(2, 3)$</p>
+            </div>
+
+            <h3>7.5 Exercícios Desafiadores</h3>
+
+            <div class="exercise-box">
+                <h4>Exercício 12: Derivação Logarítmica</h4>
+                <p><strong>Use derivação logarítmica para encontrar $\frac{dy}{dx}$:</strong></p>
+                <p>a) $y = x^x$ (para $x > 0$)</p>
+                <p>b) $y = (x^2 + 1)^x$</p>
+                <p>c) $y = \frac{x^2\sqrt{x+1}}{(x-1)^3}$</p>
+                
+                <p><strong>Soluções:</strong></p>
+                <p>a) $\ln y = x \ln x$</p>
+                <p>$\frac{1}{y}\frac{dy}{dx} = \ln x + x \cdot \frac{1}{x} = \ln x + 1$</p>
+                <p>$\frac{dy}{dx} = y(\ln x + 1) = x^x(\ln x + 1)$</p>
+                
+                <p>b) $\ln y = x \ln(x^2 + 1)$</p>
+                <p>$\frac{1}{y}\frac{dy}{dx} = \ln(x^2 + 1) + x \cdot \frac{2x}{x^2 + 1}$</p>
+                <p>$\frac{dy}{dx} = (x^2 + 1)^x \left[\ln(x^2 + 1) + \frac{2x^2}{x^2 + 1}\right]$</p>
+                
+                <p>c) $\ln y = 2\ln x + \frac{1}{2}\ln(x+1) - 3\ln(x-1)$</p>
+                <p>$\frac{1}{y}\frac{dy}{dx} = \frac{2}{x} + \frac{1}{2(x+1)} - \frac{3}{x-1}$</p>
+                <p>$\frac{dy}{dx} = y\left[\frac{2}{x} + \frac{1}{2(x+1)} - \frac{3}{x-1}\right]$</p>
+            </div>
+
+            <div class="note">
+                <strong>Dicas para Resolver Exercícios:</strong>
+                <ul style="margin-left: 20px; text-align: left;">
+                    <li>Sempre identifique qual regra de derivação aplicar antes de começar</li>
+                    <li>Para funções compostas, trabalhe de fora para dentro</li>
+                    <li>Em problemas de otimização, sempre verifique se o ponto crítico é realmente um máximo ou mínimo</li>
+                    <li>Em problemas de taxa relacionada, identifique claramente todas as variáveis e suas relações</li>
+                    <li>Pratique regularmente para desenvolver intuição sobre qual método usar</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="author-info">
+            <h3>Sobre este Curso</h3>
+            <p>Este curso completo de derivadas foi desenvolvido pela <strong>Manus AI</strong> para fornecer uma base sólida em cálculo diferencial. O conteúdo abrange desde conceitos básicos até aplicações avançadas, com exemplos práticos e exercícios para consolidar o aprendizado.</p>
+            
+            <p>Para mais recursos educacionais e cursos avançados, visite nosso site oficial. Esperamos que este material seja útil em sua jornada de aprendizado matemático!</p>
+            
+            <p><em>Data de criação: 22 de julho de 2025</em></p>
+        </div>
+
+        <button class="back-to-top" onclick="scrollToTop()">↑</button>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Highlight current section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add active class styling
+        const style = document.createElement('style');
+        style.textContent = `
+            nav a.active {
+                background: #667eea !important;
+                color: white !important;
+                transform: translateY(-2px);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+
