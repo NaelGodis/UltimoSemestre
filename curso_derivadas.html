@@ -15,245 +15,405 @@
         };
     </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Reset básico para todos os elementos */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
+    }
 
+    /* Estilos globais para o corpo do documento */
+    body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+        /* Adicionado para fontes responsivas */
+        font-size: 16px; /* Tamanho base para desktop */
+    }
+
+    /* Container principal para centralizar e limitar a largura do conteúdo */
+    .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+    /* Estilo do cabeçalho */
+    header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* Ajuste de padding para telas menores */
+        padding-top: clamp(30px, 8vw, 60px);
+        padding-bottom: clamp(30px, 8vw, 60px);
+    }
+
+    /* Título principal */
+    h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        /* Fonte responsiva */
+        font-size: clamp(2em, 8vw, 3em); /* Min 2em, Max 3em, responsivo com 8vw */
+    }
+
+    /* Subtítulo */
+    .subtitle {
+        font-size: 1.2em;
+        opacity: 0.9;
+        font-weight: 300;
+        /* Fonte responsiva */
+        font-size: clamp(1em, 4vw, 1.2em);
+    }
+
+    /* Navegação */
+    nav {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-bottom: 40px;
+        position: sticky;
+        top: 20px;
+        z-index: 100;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        color: #667eea;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        /* Ajuste de padding e fonte para telas menores */
+        padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px);
+        font-size: clamp(0.9em, 3vw, 1em);
+    }
+
+    nav a:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Seções de conteúdo */
+    .section {
+        background: white;
+        margin-bottom: 40px;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        /* Ajuste de padding para telas menores */
+        padding: clamp(20px, 5vw, 40px);
+    }
+
+    /* Títulos de seção */
+    h2 {
+        color: #667eea;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 15px;
+        /* Fonte responsiva */
+        font-size: clamp(1.8em, 6vw, 2.5em);
+        margin-bottom: clamp(15px, 4vw, 30px);
+    }
+
+    /* Subtítulos dentro das seções */
+    h3 {
+        color: #764ba2;
+        font-size: 1.8em;
+        margin: 30px 0 20px 0;
+        /* Fonte responsiva */
+        font-size: clamp(1.4em, 5vw, 1.8em);
+        margin-top: clamp(20px, 5vw, 30px);
+        margin-bottom: clamp(10px, 3vw, 20px);
+    }
+
+    /* Subtítulos menores */
+    h4 {
+        color: #555;
+        font-size: 1.4em;
+        margin: 25px 0 15px 0;
+        /* Fonte responsiva */
+        font-size: clamp(1.2em, 4vw, 1.4em);
+        margin-top: clamp(15px, 4vw, 25px);
+        margin-bottom: clamp(10px, 2vw, 15px);
+    }
+
+    /* Parágrafos */
+    p {
+        margin-bottom: 20px;
+        text-align: justify;
+        font-size: 1.1em;
+        /* Fonte responsiva */
+        font-size: clamp(1em, 3.5vw, 1.1em);
+        margin-bottom: clamp(15px, 3vw, 20px);
+    }
+
+    /* Caixas de conteúdo específico (fórmula, exemplo, teorema, exercício) */
+    .formula-box, .example-box, .theorem-box, .exercise-box {
+        padding: 25px;
+        margin: 25px 0;
+        border-radius: 10px;
+        /* Ajuste de padding e margin para telas menores */
+        padding: clamp(15px, 4vw, 25px);
+        margin: clamp(15px, 4vw, 25px) 0;
+    }
+
+    .formula-box {
+        background: #f8f9ff;
+        border: 2px solid #667eea;
+        text-align: center;
+    }
+
+    .example-box {
+        background: #fff8e1;
+        border-left: 5px solid #ffc107;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .theorem-box {
+        background: #e8f5e8;
+        border: 2px solid #4caf50;
+    }
+
+    .exercise-box {
+        background: #fce4ec;
+        border: 2px solid #e91e63;
+    }
+
+    /* Notas */
+    .note {
+        background: #e3f2fd;
+        border-left: 5px solid #2196f3;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 0 10px 10px 0;
+        font-style: italic;
+        /* Ajuste de padding e margin para telas menores */
+        padding: clamp(15px, 4vw, 20px);
+        margin: clamp(15px, 4vw, 20px) 0;
+    }
+
+    /* Tabelas */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: block; /* Permite scroll horizontal em telas pequenas */
+        overflow-x: auto; /* Adiciona scroll horizontal se a tabela for muito larga */
+        white-space: nowrap; /* Impede que o conteúdo da célula quebre linha */
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        /* Ajuste de padding para telas menores */
+        padding: clamp(10px, 3vw, 15px);
+    }
+
+    th {
+        background: #667eea;
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:hover {
+        background: #f5f5f5;
+    }
+
+    /* Contêiner de gráficos */
+    .graph-container {
+        text-align: center;
+        margin: 30px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        /* Ajuste de padding e margin para telas menores */
+        padding: clamp(15px, 4vw, 20px);
+        margin: clamp(20px, 5vw, 30px) 0;
+    }
+
+    /* Informações do autor */
+    .author-info {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 60px;
+        /* Ajuste de padding e margin para telas menores */
+        padding: clamp(20px, 5vw, 40px);
+        margin-top: clamp(30px, 8vw, 60px);
+    }
+
+    /* Botão "Voltar ao topo" */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        display: none; /* Escondido por padrão, será mostrado com JavaScript */
+        /* Ajuste de tamanho para telas menores */
+        width: clamp(40px, 10vw, 60px);
+        height: clamp(40px, 10vw, 60px);
+        font-size: clamp(16px, 4vw, 20px);
+        bottom: clamp(15px, 4vw, 30px);
+        right: clamp(15px, 4vw, 30px);
+    }
+
+    .back-to-top:hover {
+        background: #764ba2;
+        transform: translateY(-3px);
+    }
+
+    /* Media Queries para responsividade */
+    /* Telas menores que 768px (tablets e celulares) */
+    @media (max-width: 768px) {
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            font-size: 15px; /* Reduz o tamanho base da fonte para telas menores */
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-            margin-bottom: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 10px; /* Reduz o padding do container */
         }
 
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.2em; /* Reduz o tamanho do H1 */
         }
-
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        nav {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav a {
-            color: #667eea;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .section {
-            background: white;
-            margin-bottom: 40px;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
+        
         h2 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 15px;
+            font-size: 1.8em; /* Reduz o tamanho do H2 */
+            margin-bottom: 20px;
         }
 
         h3 {
-            color: #764ba2;
-            font-size: 1.8em;
-            margin: 30px 0 20px 0;
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
         }
 
         h4 {
-            color: #555;
-            font-size: 1.4em;
-            margin: 25px 0 15px 0;
+            font-size: 1.2em;
+            margin: 15px 0 10px 0;
         }
 
         p {
-            margin-bottom: 20px;
-            text-align: justify;
-            font-size: 1.1em;
+            font-size: 1em; /* Reduz o tamanho do parágrafo */
+            margin-bottom: 15px;
         }
 
-        .formula-box {
-            background: #f8f9ff;
-            border: 2px solid #667eea;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 25px 0;
+        nav ul {
+            flex-direction: column; /* Coloca os itens do menu em coluna */
+            align-items: center; /* Centraliza os itens do menu */
+        }
+
+        nav a {
+            width: 100%; /* Faz com que os links ocupem a largura total */
             text-align: center;
+            margin-bottom: 10px; /* Adiciona espaçamento entre os links */
         }
 
-        .example-box {
-            background: #fff8e1;
-            border-left: 5px solid #ffc107;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 0 10px 10px 0;
+        .section {
+            padding: 20px; /* Reduz o padding das seções */
+            margin-bottom: 30px;
         }
 
-        .theorem-box {
-            background: #e8f5e8;
-            border: 2px solid #4caf50;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 25px 0;
+        .formula-box, .example-box, .theorem-box, .exercise-box, .note {
+            padding: 15px;
+            margin: 15px 0;
+        }
+    }
+
+    /* Telas menores que 480px (principalmente celulares) */
+    @media (max-width: 480px) {
+        body {
+            font-size: 14px; /* Reduz ainda mais o tamanho base da fonte */
         }
 
-        .exercise-box {
-            background: #fce4ec;
-            border: 2px solid #e91e63;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 25px 0;
+        header {
+            padding: 40px 15px; /* Reduz o padding do cabeçalho */
         }
 
-        .note {
-            background: #e3f2fd;
-            border-left: 5px solid #2196f3;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
-            font-style: italic;
+        h1 {
+            font-size: 1.8em; /* Ajusta o tamanho do H1 para celular */
+        }
+
+        .subtitle {
+            font-size: 0.9em;
+        }
+
+        h2 {
+            font-size: 1.6em; /* Ajusta o tamanho do H2 para celular */
+            border-bottom: 2px solid #667eea; /* Borda um pouco mais fina */
+            padding-bottom: 10px;
+        }
+
+        nav {
+            padding: 15px; /* Reduz o padding da navegação */
+            top: 10px; /* Ajusta a posição sticky */
+        }
+
+        nav a {
+            padding: 8px 15px; /* Reduz o padding dos links de navegação */
+            font-size: 0.9em;
+        }
+
+        .section {
+            padding: 15px; /* Reduz o padding das seções */
+            margin-bottom: 20px;
         }
 
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /* Força a tabela a rolar horizontalmente em telas muito pequenas, se necessário */
+            width: auto;
         }
-
+        
         th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background: #667eea;
-            color: white;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background: #f5f5f5;
-        }
-
-        .graph-container {
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            font-size: 0.9em; /* Reduz a fonte das células da tabela */
+            padding: 10px;
         }
 
         .author-info {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            h2 {
-                font-size: 2em;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .section {
-                padding: 20px;
-            }
+            padding: 25px; /* Reduz o padding das informações do autor */
+            margin-top: 40px;
         }
 
         .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            display: none;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+            bottom: 20px;
+            right: 20px;
         }
-
-        .back-to-top:hover {
-            background: #764ba2;
-            transform: translateY(-3px);
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <div class="container">
@@ -435,7 +595,8 @@
                 <ul style="margin-left: 20px;">
                     <li>$\frac{d}{dx}(x^3) = 3x^2$</li>
                     <li>$\frac{d}{dx}(x^{-2}) = -2x^{-3} = -\frac{2}{x^3}$</li>
-                    <li>$\frac{d}{dx}(\sqrt{x}) = \frac{d}{dx}(x^{1/2}) = \frac{1}{2}x^{-1/2} = \frac{1}{2\sqrt{x}}$</li>
+                    <li>$\frac{d}{dx}(\sqrt{x}) = \frac{d}{dx}(x^{1/2}) = $$
+                        $$\frac{1}{2}x^{-1/2} = \frac{1}{2\sqrt{x}}$</li>
                     <li>$\frac{d}{dx}(1) = \frac{d}{dx}(x^0) = 0 \cdot x^{-1} = 0$</li>
                 </ul>
             </div>
@@ -491,7 +652,8 @@
             <div class="theorem-box">
                 <h4>Regra do Quociente</h4>
                 <p>Se $f(x)$ e $g(x)$ são funções deriváveis e $g(x) \neq 0$, então:</p>
-                $$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{[g(x)]^2}$$
+                $$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = $$
+                $$\frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{[g(x)]^2}$$
             </div>
 
             <p>Uma forma de lembrar esta regra é: "derivada do numerador vezes denominador, menos numerador vezes derivada do denominador, tudo sobre denominador ao quadrado".</p>
@@ -871,7 +1033,8 @@
                     <li>Altura: $x$</li>
                 </ul>
                 
-                <p>Volume: $V(x) = x(30-2x)(20-2x) = x(600 - 100x + 4x^2) = 4x^3 - 100x^2 + 600x$</p>
+                <p>Volume: $V(x) = x(30-2x)(20-2x) =$$ 
+                    $$ x(600 - 100x + 4x^2) = 4x^3 - 100x^2 + 600x$</p>
                 
                 <p>Restrições: $0 < x < 10$ (para que as dimensões sejam positivas)</p>
                 
@@ -1108,7 +1271,8 @@
                 <h4>Exemplo: Análise Completa</h4>
                 <p>Analisar a função $f(x) = x^4 - 6x^2 + 5$</p>
                 
-                <p><strong>Primeira derivada:</strong> $f'(x) = 4x^3 - 12x = 4x(x^2 - 3) = 4x(x-\sqrt{3})(x+\sqrt{3})$</p>
+                <p><strong>Primeira derivada:</strong> $f'(x) = 4x^3 - 12x = 4x(x^2 - 3) =$$ 
+                    $$ 4x(x-\sqrt{3})(x+\sqrt{3})$</p>
                 
                 <p><strong>Pontos críticos:</strong> $x = 0, x = \pm\sqrt{3}$</p>
                 
@@ -1205,9 +1369,12 @@
                 <p>c) $h(x) = (x^2 + 1)(x^2 - 1)$</p>
                 
                 <p><strong>Soluções:</strong></p>
-                <p>a) $f'(x) = 2(3x - 2) + (2x + 1) \cdot 3 = 6x - 4 + 6x + 3 = 12x - 1$</p>
-                <p>b) $g'(x) = 2x(x^3 - 4x + 1) + x^2(3x^2 - 4) = 2x^4 - 8x^2 + 2x + 3x^4 - 4x^2 = 5x^4 - 12x^2 + 2x$</p>
-                <p>c) $h'(x) = 2x(x^2 - 1) + (x^2 + 1) \cdot 2x = 2x^3 - 2x + 2x^3 + 2x = 4x^3$</p>
+                <p>a) $f'(x) = 2(3x - 2) + (2x + 1) \cdot 3 = $$
+                    $$ 6x - 4 + 6x + 3 = 12x - 1$</p>
+                <p>b) $g'(x) = 2x(x^3 - 4x + 1) + x^2(3x^2 - 4) = $$
+                    $$2x^4 - 8x^2 + 2x + 3x^4 - 4x^2 = 5x^4 - 12x^2 + 2x$</p>
+                <p>c) $h'(x) = 2x(x^2 - 1) + (x^2 + 1) \cdot 2x = $$
+                    $$2x^3 - 2x + 2x^3 + 2x = 4x^3$</p>
             </div>
 
             <div class="exercise-box">
