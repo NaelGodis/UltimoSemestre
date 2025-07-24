@@ -1,14 +1,18 @@
  /* ========================
-   ESTILOS GERAIS E RESET
+   VARIÁVEIS GLOBAIS (THEME)
    ======================== */
 :root {
     --cor-primaria: #0a2e58;
-    --cor-secundaria: #f0f8ff;
+    --cor-secundaria: #f0f8ff; /* Usado no fundo do menu */
     --cor-texto: #333;
     --cor-destaque: #007bff;
+    --cor-borda-sutil: #dee2e6;
+    --largura-menu: 280px; /* Variável para a largura do menu */
 }
 
-/* Efeito de rolagem suave para as âncoras */
+/* ========================
+   ESTILOS GERAIS E RESET
+   ======================== */
 html {
     scroll-behavior: smooth;
 }
@@ -16,32 +20,15 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    padding: 0;
     background-color: #f4f4f4;
     color: var(--cor-texto);
     line-height: 1.6;
     max-width: 100%;
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-header, footer {
-    background-color: var(--cor-primaria);
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-}
-
 h1, h2, h3 {
     color: var(--cor-primaria);
-}
-
-header h1 {
-    color: white;
-    margin: 0;
 }
 
 a {
@@ -53,69 +40,120 @@ a:hover {
     text-decoration: underline;
 }
 
+/* =======================================
+   LAYOUT PRINCIPAL (SIDEBAR + CONTEÚDO)
+   ======================================= */
+
+/* 1. O Conteúdo Principal */
+.conteudo-principal {
+    /* CRIA O ESPAÇO PARA O MENU LATERAL */
+    margin-left: var(--largura-menu); 
+    padding: 20px;
+}
+
+/* 2. O Menu Lateral (Fixado na Esquerda) */
+.menu-lateral {
+    width: var(--largura-menu);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--cor-secundaria);
+    border-right: 1px solid var(--cor-borda-sutil);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 100; /* Garante que o menu fique acima de outros elementos */
+    margin-left: 2px;
+}
+
 /* ========================
-   PÁGINA INICIAL (HOME)
+   ESTILOS DO MENU LATERAL
    ======================== */
-.secao-home {
-    text-align: center;
-    padding: 40px 20px;
+.menu-lateral h2 {
+    font-size: 1.5em;
+    color: var(--cor-primaria);
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-borda-sutil);
 }
 
-.botoes-grid {
-    display: grid;
-    /* Cria colunas responsivas: elas terão no mínimo 200px e no máximo 1fr (fração do espaço) */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px; /* Espaçamento entre os botões */
-    margin-top: 20px;
+.menu-lateral ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.botao-quadrado {
-    position: relative; /* Necessário para posicionar o texto sobre a imagem */
+.menu-lateral li {
+    margin-bottom: 5px;
+}
+
+.menu-lateral a {
     display: block;
-    aspect-ratio: 1 / 1; /* Garante que o botão seja sempre quadrado */
-    border-radius: 15px;
-    overflow: hidden; /* Esconde partes da imagem que saem do container */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 12px 15px;
+    color: #495057;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
 }
 
-.botao-quadrado:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+.menu-lateral a:hover {
+    background-color: #e9ecef;
+    color: var(--cor-destaque);
     text-decoration: none;
 }
 
-.botao-quadrado img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz a imagem cobrir o espaço sem distorcer */
-    filter: brightness(0.7); /* Escurece um pouco a imagem para o texto ser legível */
-    transition: filter 0.3s ease;
+.menu-lateral a.toggle::after {
+    content: '▶';
+    float: right;
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
 }
 
-.botao-quadrado:hover img {
-    filter: brightness(0.5);
-}
-
-.botao-quadrado span {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+.menu-lateral a.toggle.ativo {
+    background-color: var(--cor-destaque);
     color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: left;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.menu-lateral a.toggle.ativo::after {
+    transform: rotate(90deg);
+}
+
+.menu-lateral .submenu {
+    display: none;
+    padding-left: 20px;
+    margin-top: 5px;
+    border-left: 2px solid var(--cor-destaque);
+    margin-left: 5px;
+}
+
+.menu-lateral .submenu a {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    color: #6c757d;
 }
 
 /* ========================
-   PÁGINA DE ARTIGO
+   COMPONENTES DA PÁGINA
    ======================== */
-.btn-voltar {
-    display: inline-block;
-    margin: 20px 0;
-    font-weight: bold;
+.container {
+    max-width: 960px;
+    /* Margin auto não é mais necessário aqui pois o .conteudo-principal já centraliza o layout */
+    margin: 0; 
+    padding: 0;
+}
+
+header, footer {
+    background-color: var(--cor-primaria);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    color: white;
+    margin: 0;
 }
 
 .artigo-header {
@@ -124,72 +162,24 @@ a:hover {
     padding-bottom: 10px;
 }
 
-.sumario {
-    background-color: var(--cor-secundaria);
-    border: 1px solid #ddd;
-    border-left: 5px solid var(--cor-destaque);
-    padding: 15px 20px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-}
-
-.sumario h3 {
-    margin-top: 0;
-}
-
-.sumario ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sumario li {
-    margin-bottom: 8px;
-}
-
 article section {
     margin-bottom: 40px;
 }
 
-
 .bloco {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 1em;
-            margin: 1.5em 0;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .definicao {
-            border-left: 5px solid #d9534f; /* Vermelho */
-            background-color: #fdf7f7;
-        }
-        .exemplo {
-            border-left: 5px solid #5cb85c; /* Verde */
-            background-color: #f7fdf7;
-        }
-        blockquote {
-            border-left: 5px solid #f0ad4e; /* Laranja */
-            background-color: #fffaf0;
-            padding: 10px 20px;
-            margin: 20px 0;
-            font-style: italic;
-        }
-        blockquote footer {
-            text-align: right;
-            font-style: normal;
-            font-weight: bold;
-        }
-        code {
-            background-color: #eee;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .katex-display {
-            margin: 1em 0;
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1em;
+    margin: 1.5em 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.definicao { border-left: 5px solid #d9534f; background-color: #fdf7f7; }
+.exemplo { border-left: 5px solid #5cb85c; background-color: #f7fdf7; }
+blockquote { border-left: 5px solid #f0ad4e; background-color: #fffaf0; padding: 10px 20px; margin: 20px 0; font-style: italic; }
+blockquote footer { text-align: right; font-style: normal; font-weight: bold; }
+code { background-color: #eee; padding: 2px 5px; border-radius: 4px; font-family: 'Courier New', Courier, monospace; }
+.katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; }
 
 /* ========================
    BOTÃO FLUTUANTE "TOPO"
@@ -203,7 +193,7 @@ article section {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    display: none; /* Começa escondido */
+    display: none;
     justify-content: center;
     align-items: center;
     font-size: 24px;
@@ -216,7 +206,25 @@ article section {
     text-decoration: none;
 }
 
-/* Classe que será adicionada/removida via JS */
 .btn-topo-visivel {
     display: flex;
+}
+
+/* ========================
+   RESPONSIVIDADE
+   ======================== */
+@media (max-width: 992px) {
+    /* Em telas menores, o menu não fica mais fixo na lateral */
+    .menu-lateral {
+        position: relative; /* Volta ao fluxo normal do documento */
+        width: 100%;
+        height: auto; /* Altura automática */
+        border-right: none;
+        border-bottom: 1px solid var(--cor-borda-sutil);
+    }
+
+    /* O conteúdo principal ocupa 100% da largura */
+    .conteudo-principal {
+        margin-left: 0;
+    }
 }

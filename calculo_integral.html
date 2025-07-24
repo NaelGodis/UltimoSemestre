@@ -15,56 +15,66 @@
         onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
+<nav class="menu-lateral" aria-label="Sumário do Artigo">
+    <h2>Sumário</h2>
+    <ul>
+        <!-- Item 1 com Submenu -->
+        <li>
+            <a href="#integral" class="toggle">1. Integral</a>
+            <ul class="submenu">
+                <li><a href="#integral-indefinida">1.1 Integral Indefinida</a></li>
+            </ul>
+        </li>
 
-    <header>
-        <div class="container">
-            <h1></h1>
-        </div>
-    </header>
+        <!-- Item 2 com Submenu -->
+        <li>
+            <a href="#tecnicas" class="toggle">2. Técnicas De Integração</a>
+            <ul class="submenu">
+                <li><a href="#integracao-substituicao">2.1 Integração Por Substituição</a></li>
+                <li><a href="#integracao-partes">2.2 Integração Por Partes</a></li>
+                <li><a href="#integracao-trigonometricas">2.3 Integração De Funções Trigonométricas</a></li>
+                <li><a href="#fracoes-parciais">2.4 Integrais Por Frações Parciais</a></li>
+            </ul>
+        </li>
 
-    <main class="container">
+        <!-- Item 3 com Submenu -->
+        <li>
+            <a href="#aplicacoes" class="toggle">3. Aplicações da Integral</a>
+            <ul class="submenu">
+                <li><a href="#comrimento-curvas">3.1 Comprimento De Curvas</a></li>
+                <li><a href="#volume-solido-revolucao">3.2 Volume de Sólido de Revolução</a></li>
+                <li><a href="#trabalho">3.3 Trabalho</a></li>
+                <li><a href="#forca-fluido">3.4 Força De Fluido</a></li>
+            </ul>
+        </li>
+
+        <!-- Item 4 com Submenu -->
+        <li>
+            <a href="#sequencia" class="toggle">4. Sequência e Séries</a>
+            <ul class="submenu">
+                <li><a href="#sequencias">4.1 Sequência</a></li>
+                <li><a href="#series">4.2 Séries</a></li>
+                <li><a href="#series-taylor-maclaurin">4.3 Séries De Taylor e Maclaurin</a></li>
+            </ul>
+        </li>
+        
+        <!-- Itens sem submenu -->
+        <li><a href="#Listas">5. Listas</a></li>
+        <li><a href="#Resolução de Provas">6. Resolução de Provas</a></li>
+        <li><a href="#Exercicios Resolvidos">7. Exercícios Resolvidos</a></li>
+        <li><a href="curso_derivadas.html">Mini Curso de Derivadas</a></li>
+    </ul>
+</nav>
+    
+
+    <main class="conteudo-principal">
         <!-- Botão para voltar para a Home -->
         <a href="index.html" class="btn-voltar">← Voltar para a Home</a>
 
         <article>
-            <header class="artigo-header">
-                <h2></h2>
-                <p></p>
-            </header>
+            
 
-            <!-- Sumário com Âncoras -->
-            <nav class="sumario" aria-label="Sumário do Artigo">
-                <h2>Sumário</h2>
-                <ul>
-                    <li> <h3><a href="#integral">1. Integral</a></h3></li>
-                    <li> <h4><a href="#integral-indefinida">1.1 Integral Indefinida</a></h4></li>
-                    
-                    <li><h3><a href="#tecnicas">2. Técnicas De Integração</a></h3></li>
-                    <li> <h4><a href="#integracao-substituicao">2.1 Integração Por Substituição</a></h4></li>
-                    <li> <h4><a href="#integracao-partes">2.2 Integração Por Partes</a></h4></li>
-                    <li> <h4><a href="#integracao-trigonometricas">2.3 Integração De Funções Trigonométricas</a></h4></li>
-                    <li> <h4><a href="#fracoes-parciais">2.4 Integrais De Funções Racionais Por Frações Parciais</a></h4></li>
-
-                    <li><h3><a href="#aplicacoes">3. Aplicações da Integral</a></h3></li>
-                    <li> <h4><a href="#comrimento-curvas">3.1 Comprimento De Curvas</a></h4></li>
-                    <li> <h4><a href="#volume-solido-revolucao">3.2 Volume de Solido de Revolução (eixo y)</a></h4></li>
-                    <li> <h4><a href="#trabalho">3.3 Trabalho</a></h4></li>
-                    <li> <h4><a href="#forca-fluido">3.4 Força De Fluido Sobre Uma Superfície Vertical</a></h4></li>
-
-                    <li><h3><a href="#sequencia">4. Sequência e Séries</a></h3></li>
-                    <li> <h4><a href="#sequencias">4.1 Sequência</a></h4></li>
-                    <li> <h4><a href="#series">4.2 Series</a></h4></li>
-                    <li> <h4><a href="#series-taylor-maclaurin">4.3 Series De Taylor e Maclaurin</a></h4></li>
-
-                    <li><h3><a href="#Listas">5.Listas</a></h3></li>
-
-                    <li><h3><a href="#Resolução de Provas">6.Resolução de Provas</a></h3></li>
-
-                     <li><h3><a href="#Exercicios Resolvidos">7.Exercícios Resolvidos</a></h3></li>
-                </ul> 
-                        <li><h3><a href="curso_derivadas.html">mini curso de derivadas</a></h3></li>
-                <ul> 
-            </nav>
+           
 
             <!-- Conteúdo do Artigo dividido em seções com IDs -->
             <section id="integral">

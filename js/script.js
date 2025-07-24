@@ -22,3 +22,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Chama a função uma vez no carregamento, caso a página já carregue rolada
     toggleBotaoTopo(); 
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleciona todos os links que devem funcionar como um "toggle"
+    const toggles = document.querySelectorAll('.menu-lateral a.toggle');
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', function(event) {
+            // Previne a navegação padrão do link, para que ele apenas abra/feche o menu
+            event.preventDefault();
+
+            // Adiciona/remove a classe 'ativo' no link clicado
+            this.classList.toggle('ativo');
+
+            // Encontra o submenu que é o "irmão" seguinte do link clicado
+            const submenu = this.nextElementSibling;
+
+            // Mostra ou esconde o submenu
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        });
+    });
+});
